@@ -1,0 +1,9 @@
+import React from 'react';
+
+const Editor = (props) => {
+    return (
+        <textarea id="editor" value={props.markdown} onChange={props.onChange} type="text" className="w-100 h-100" rows="35" />
+    )
+}
+
+export default Editor;
