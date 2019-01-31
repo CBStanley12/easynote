@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-const Editor = require('./components/Editor');
-const Preview = require('./components/Preview');
-const Toolbar = require('./components/Toolbar');
+import Editor from './components/Editor';
+import Preview from './components/Preview';
+import Toolbar from './components/Toolbar';
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class App extends Component {
           <Editor markdown={this.state.markdown} onChange={this.handleChange} />
         </div>
         <div className="col-sm-12 col-md-6 ml-auto p-2 border">
-          <Toolbar icon="fa fa-file-text-0" text="  Preview" />
+          <Toolbar icon="fa fa-file-text-o" text="  Preview" />
           <Preview markdown={this.state.markdown} />
         </div>
       </div>
