@@ -21,12 +21,12 @@ class App extends Component {
   
   render() {
     return (
-      <div className="row m-1 p-3">
-        <div className="col-sm-12 col-md-5 p-2 border">
+      <div id="app" className="row m-1 p-3">
+        <div id="edit-col" className="col-sm-12 col-md-5 p-2 border">
           <Toolbar icon="fa fa-pencil-square-o" text="  Editor" />
           <Editor markdown={this.state.markdown} onChange={this.handleChange} />
         </div>
-        <div className="col-sm-12 col-md-6 ml-auto p-2 border">
+        <div id="prev-col" className="col-sm-12 col-md-6 ml-auto min-vh-100 p-2 border">
           <Toolbar icon="fa fa-file-text-o" text="  Preview" />
           <Preview markdown={this.state.markdown} />
         </div>

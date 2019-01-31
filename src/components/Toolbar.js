@@ -2,7 +2,7 @@ import React from 'react';
 
 const Toolbar = (props) => {
     return (
-        <div className="toolbar">
+        <div className="toolbar container-fluid">
             <i className={props.icon} />
             {props.text}
         </div>
