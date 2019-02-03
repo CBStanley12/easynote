@@ -21,13 +21,12 @@ class App extends Component {
   
   render() {
     return (
-      <div id="app" className="row m-1 p-3">
+      <div className="row justify-content-center m-1 p-3">
+        <Toolbar className="text-right" editIcon="fa fa-pencil-square-o" editText="  Editor" prevIcon="fa fa-file-text-o" prevText="  Preview" />
         <div id="edit-col" className="col-sm-12 col-md-5 p-2 border">
-          <Toolbar icon="fa fa-pencil-square-o" text="  Editor" />
           <Editor markdown={this.state.markdown} onChange={this.handleChange} />
         </div>
         <div id="prev-col" className="col-sm-12 col-md-6 ml-auto min-vh-100 p-2 border">
-          <Toolbar icon="fa fa-file-text-o" text="  Preview" />
           <Preview markdown={this.state.markdown} />
         </div>
       </div>

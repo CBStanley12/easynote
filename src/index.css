@@ -13,7 +13,27 @@ code {
     monospace;
 }
 
-#app {
-  width: 100vw;
-  height: 100vh;
+#root {
+  width: 90vw;
+  height: 80vh;
+}
+
+textarea {
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+#edit-col, #prev-col {
+  background-color: white;
+}
+
+#edit-tool, #prev-tool {
+  font-size: 1.2em;
+  color: white;
+  background-color: #2F2F28;
+}
+
+.border {
+  border: 2px solid #2F2F28 !important;
 }
