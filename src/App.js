@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Editor from './components/Editor';
-import Preview from './components/Preview';
-import Toolbar from './components/Toolbar';
+import Editor from './components/Editor/index';
+import Preview from './components/Preview/index';
+import Toolbar from './components/Header/index';
 
 class App extends Component {
   constructor(props) {
