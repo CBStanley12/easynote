@@ -1,5 +1,5 @@
 <h1 align="center">Markdown Previewer</h1>
-<p align="center">An editor that allows you to preview GitHub Flavored Markdown</p>
+<p align="center">An editor that allows you to preview text as GitHub Flavored Markdown</p>
 
 ## Table of Contents
 * [Project Status](#project-status)
@@ -24,7 +24,9 @@ Complete:
 - [X] Preview text as GitHub Flavored Markdown
 
 ## Screenshots
-![Example Screenshot]()
+![Markdown Previewer - Example Editor Screenshot](./public/images/screenshot-1.png)
+
+![Markdown Previewer - Example Display Screenshot](./public/images/screenshot-2.png)
 
 ## Inspirations
 This project was built as part of freeCodeCamp's [Front End Libraries Certification](https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-markdown-previewer)
@@ -33,6 +35,8 @@ This project was built as part of freeCodeCamp's [Front End Libraries Certificat
 Twitter - [@CBStanley12](https://twitter.com/CBStanley12)
 
 DEV - [cbstanley12](https://dev.to/cbstanley12)
+
+Portfolio - [cbstanley.tech](https://cbstanley.tech)
 
 ## License
 **MIT License**: 
