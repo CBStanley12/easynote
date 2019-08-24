@@ -1,8 +1,10 @@
 import React from 'react';
 
-const Editor = (props) => {
+const Editor = ({ markdown, onChange, isPreviewDisplayed }) => {
     return (
-        <textarea id="editor" value={props.markdown} onChange={props.onChange} type="text" className="w-100" rows="30" />
+        <div className={`editor ${isPreviewDisplayed ? "hide" : ""}`}>
+            <textarea className="editor_textarea" value={markdown} onChange={onChange} type="text" rows="30" />
+        </div>
     )
 }
 
