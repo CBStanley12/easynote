@@ -68,6 +68,7 @@
   height: 100%;
   min-height: 90vh;
   max-height: 93vh;
+  font-family: var(--font-text);
   padding: 15px 120px;
   overflow-y: auto;
   word-wrap: break-word;
@@ -115,6 +116,13 @@
     padding: 10px 10px;
     border: none;
   }
+
+  .preview_display {
+    padding: 10px 10px;
+    font-size: 0.8em;
+  }
+
+  .preview_display img { max-width: 50vw; }
 }
 
 @media only screen and (min-width: 400px) and (max-width: 1200px) {
@@ -132,4 +140,11 @@
     padding: 10px 60px;
     border: none;
   }
+
+  .preview_display {
+    padding: 10px 60px;
+    font-size: 1.3em;
+  }
+
+  .preview_display img { max-width: 50vw; }
 }
