@@ -12,6 +12,7 @@ class App extends Component {
       isPreviewDisplayed: false
     }
     this.handleChange = this.handleChange.bind(this);
+    this.displayPreview = this.displayPreview.bind(this);
   }
 
   handleChange(e) {
@@ -19,16 +20,28 @@ class App extends Component {
       markdown: e.target.value
     });
   }
+
+  displayPreview() {
+    if(!this.state.isPreviewDisplayed) {
+      this.setState({
+        isPreviewDisplayed: true
+      });
+    } else {
+      this.setState({
+        isPreviewDisplayed: false
+      });
+    }
+  }
   
   render() {
     const { markdown, isPreviewDisplayed } = this.state;
-    const { handleChange } = this;
+    const { handleChange, displayPreview } = this;
 
     return (
       <div className="container">
-        <Header click={handleChange} isPreviewDisplayed={isPreviewDisplayed} />
-        <Editor markdown={markdown} onChange={handleChange} />
-        <Preview markdown={markdown} />
+        <Header click={displayPreview} isPreviewDisplayed={isPreviewDisplayed} />
+        <Editor markdown={markdown} onChange={handleChange} isPreviewDisplayed={isPreviewDisplayed} />
+        <Preview markdown={markdown} isPreviewDisplayed={isPreviewDisplayed} />
       </div>
     );
   }
@@ -36,6 +49,7 @@ class App extends Component {
 
 const placeholder =
 `# Welcome to my React Markdown Previewer!
+## Start typing to preview your markdown text!
 
 ## This is a sub-heading...
 ### And here's some other cool stuff:
