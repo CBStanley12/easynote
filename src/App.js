@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import Editor from './components/Editor/index';
-import Preview from './components/Preview/index';
-import Toolbar from './components/Header/index';
+import Editor from './components/Editor';
+import Preview from './components/Preview';
+import Header from './components/Header';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       markdown: placeholder,
+      isPreviewDisplayed: false
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -20,15 +21,14 @@ class App extends Component {
   }
   
   render() {
+    const { markdown, isPreviewDisplayed } = this.state;
+    const { handleChange } = this;
+
     return (
-      <div className="row justify-content-center m-1 p-3">
-        <Toolbar className="text-right" editIcon="fa fa-pencil-square-o" editText="  Editor" prevIcon="fa fa-file-text-o" prevText="  Preview" />
-        <div id="edit-col" className="col-sm-12 col-md-5 p-2 border">
-          <Editor markdown={this.state.markdown} onChange={this.handleChange} />
-        </div>
-        <div id="prev-col" className="col-sm-12 col-md-6 ml-auto min-vh-100 p-2 border">
-          <Preview markdown={this.state.markdown} />
-        </div>
+      <div className="container">
+        <Header click={handleChange} isPreviewDisplayed={isPreviewDisplayed} />
+        <Editor markdown={markdown} onChange={handleChange} />
+        <Preview markdown={markdown} />
       </div>
     );
   }

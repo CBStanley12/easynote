@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Russo+One&display=swap');
+
+:root {
+  --primary-purple: #6C5CE7;
+  --primary-purple--light: #c9c4f6;
+  --accent-gray: #DFE6E9;
+  --font-main: "Russo One";
+  --font-text: "Roboto Slab";
+  --break-small: 400px;
+  --break-large: 1200px;
+}
+
+.container {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  grid-template-areas:
+    "header"
+    "display";
+  height: 98vh;
+  width: 100vw;
+  overflow-y: hidden;
+}
+
+.header {
+  box-sizing: border-box;
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 24px;
+
+  color: var(--primary-purple);
+
+  padding: 0 120px;
+  margin: 0;
+  border-bottom: 1px solid var(--accent-gray);
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: 500;
+}
