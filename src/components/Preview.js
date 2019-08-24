@@ -7,12 +7,14 @@ marked.setOptions({
 
 const renderer = new marked.Renderer();
 renderer.link = function (href, title, text) {
-    return `<a target="_blank" href="${href}">${text}` + '</a>';
+    return `<a target="_blank" href="${href}">${text}</a>`;
 }
 
-const Preview = (props) => {
+const Preview = ({ markdown, isPreviewDisplayed }) => {
     return (
-        <div id="preview" dangerouslySetInnerHTML={{__html: marked(props.markdown, {renderer: renderer})}} />
+        <div className={`preview ${isPreviewDisplayed ? "" : "hide"}`}>
+            <div className="preview_display" dangerouslySetInnerHTML={{__html: marked(markdown, {renderer: renderer})}} />
+        </div>
     )
 }
 
