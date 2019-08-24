@@ -48,6 +48,7 @@
 .editor_textarea {
   box-sizing: border-box;
   font-size: 1.3em;
+  font-family: var(--font-text);
   width: 100%;
   height: auto;
   min-height: 90vh;
@@ -66,6 +67,14 @@
   }
 
   .header-title { font-size: 18px; }
+
+  .editor { padding: 0; }
+
+  .editor_textarea {
+    font-size: 16px;
+    padding: 10px 10px;
+    border: none;
+  }
 }
 
 @media only screen and (min-width: 400px) and (max-width: 1200px) {
@@ -75,4 +84,12 @@
   }
 
   .header-title { font-size: 20px; }
+
+  .editor { padding: 0; }
+
+  .editor_textarea {
+    font-size: 1.4em;
+    padding: 10px 60px;
+    border: none;
+  }
 }
