@@ -40,6 +40,8 @@
   font-weight: 500;
 }
 
+.header-icon:hover { opacity: 0.7; }
+
 .editor {
   grid-area: display;
   padding: 15px 120px;
