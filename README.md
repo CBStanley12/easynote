@@ -11,7 +11,7 @@
 * [License](#license)
 
 ## Project Status
-This project is currently: _In Progress_
+This project is currently: _Complete_
 
 ## Technologies
 Built with:
@@ -24,9 +24,9 @@ Complete:
 - [X] Preview text as GitHub Flavored Markdown
 
 ## Screenshots
-![Markdown Previewer - Example Editor Screenshot](./public/images/screenshot-1.png)
+![Markdown Previewer - Example Editor Screenshot](./public/images/screenshot-editor.png)
 
-![Markdown Previewer - Example Display Screenshot](./public/images/screenshot-2.png)
+![Markdown Previewer - Example Preview Screenshot](./public/images/screenshot-preview.png)
 
 ## Inspirations
 This project was built as part of freeCodeCamp's [Front End Libraries Certification](https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-markdown-previewer)
