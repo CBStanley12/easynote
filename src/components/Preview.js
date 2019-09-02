@@ -12,7 +12,7 @@ renderer.link = function (href, title, text) {
 
 const Preview = ({ markdown, isPreviewDisplayed }) => {
     return (
-        <div className={`preview ${isPreviewDisplayed ? "" : "hide"}`}>
+        <div className={`preview ${!isPreviewDisplayed ? "hide" : ""}`}>
             <div className="preview_display" dangerouslySetInnerHTML={{__html: marked(markdown, {renderer: renderer})}} />
         </div>
     )
