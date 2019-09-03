@@ -24,11 +24,10 @@ Complete:
 - [X] Preview text as GitHub Flavored Markdown
 
 ## Screenshots
-<img src="./public/images/desktop-with-preview.png" alt="Desktop Screenshot with Preview" width="800px">
-<img src="./public/images/desktop-without-preview.png" alt="Desktop Screenshot without Preview" width="800px">
 
-<img src="./public/images/mobile-with-preview.png" alt="Desktop Screenshot with Preview" width="400px">
-<img src="./public/images/mobile-without-preview.png" alt="Desktop Screenshot without Preview" width="400px">
+![App Screenshot with Preview](./public/images/screenshot-with-preview.png)
+
+![App Screenshot without Preview](./public/images/screenshot-without-preview.png)
 
 ## Inspirations
 This project was built as part of freeCodeCamp's [Front End Libraries Certification](https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-markdown-previewer)
