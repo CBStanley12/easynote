@@ -175,7 +175,7 @@
   }
 
   .editor_textarea {
-    font-size: 1.4em;
+    font-size: 16px;
     padding: 10px 60px;
     border: none;
     height: 100%;
@@ -189,7 +189,8 @@
 
   .preview_display {
     padding: 10px 60px;
-    font-size: 1.3em;
+    min-height: 50vh;
+    max-height: calc(50vh - 60px);
   }
 
   .preview_display img { max-width: 50vw; }
