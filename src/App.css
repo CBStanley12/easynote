@@ -60,7 +60,6 @@
 .preview {
   grid-area: preview;
   border-left: 1px solid var(--accent-gray);
-  padding: 15px 0 15px 20px;
 }
 
 .preview_display {
@@ -72,7 +71,7 @@
   font-family: var(--font-text);
   overflow-y: auto;
   word-wrap: break-word;
-  padding: 0 60px 15px 10px;
+  padding: 0 60px 15px 20px;
 }
 
 .preview_display h1 { border-bottom: 2px solid black; }
@@ -81,7 +80,10 @@
   box-sizing: border-box;
   display: inline-block;
   padding: 5px 10px;
+  color: var(--primary-purple);
+  box-shadow: 0 0 2px var(--primary-purple--light);
   background-color: white;
+  border-radius: 5px;
 }
 
 .preview_display blockquote {
