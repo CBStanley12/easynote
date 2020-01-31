@@ -10,7 +10,7 @@ class App extends Component {
     super(props);
     this.state = {
       markdown: placeholder,
-      isPreviewDisplayed: true
+      isPreviewDisplayed: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.displayPreview = this.displayPreview.bind(this);
