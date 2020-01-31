@@ -12,3 +12,9 @@ body {
 *,
 *::before,
 *::after { box-sizing: inherit; }
+
+button {
+  border: none;
+  background-color: transparent;
+  color: inherit;
+}
