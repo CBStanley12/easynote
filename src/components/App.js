@@ -3,6 +3,7 @@ import '../styles/app.css';
 import Editor from './Editor';
 import Preview from './Preview';
 import Header from './Header';
+import Sidebar from './Sidebar';
 
 class App extends Component {
   constructor(props) {
@@ -38,10 +39,10 @@ class App extends Component {
     const { handleChange, displayPreview } = this;
 
     return (
-      <div className="container">
+      <div className="layout-container">
         <Header click={displayPreview} isPreviewDisplayed={isPreviewDisplayed} />
+        <Sidebar />
         <Editor markdown={markdown} onChange={handleChange} isPreviewDisplayed={isPreviewDisplayed} />
-        <Preview markdown={markdown} isPreviewDisplayed={isPreviewDisplayed} />
       </div>
     );
   }
