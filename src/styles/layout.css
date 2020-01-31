@@ -1,0 +1,27 @@
+.layout-container {
+    display: grid;
+    grid-template:
+        "sidebar header" 3.5rem
+        "sidebar content" 1fr
+        / 20rem 1fr;
+    height: 100vh;
+}
+
+.layout-header {
+    grid-area: header;
+
+    padding: 0 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.layout-sidebar {
+    grid-area: sidebar;
+    overflow: scroll;
+
+    border-right: 1px solid #ccc;
+}
+
+.layout-content {
+    grid-area: content;
+    overflow: scroll;
+}
