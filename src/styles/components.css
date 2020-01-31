@@ -7,9 +7,11 @@
 
 .icon {
     cursor: pointer;
-    margin-right: 1.3rem;
 }
 
+.icon-space {
+    margin-right: 1.3rem;
+}
 
 /* || Sidebar Component Styles || */
 .sidebar {
