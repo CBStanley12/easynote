@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Russo+One&display=swap');
+
+:root {
+    --primary-purple: #6C5CE7;
+    --primary-purple--light: #c9c4f6;
+    --accent-gray: #DFE6E9;
+    --font-main: "Russo One";
+    --font-text: "Roboto Slab";
+}

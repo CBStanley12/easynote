@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
-import Editor from './components/Editor';
-import Preview from './components/Preview';
-import Header from './components/Header';
+import '../styles/app.css';
+import Editor from './Editor';
+import Preview from './Preview';
+import Header from './Header';
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   displayPreview() {
-    if(!this.state.isPreviewDisplayed) {
+    if (!this.state.isPreviewDisplayed) {
       this.setState({
         isPreviewDisplayed: true
       });
@@ -32,7 +32,7 @@ class App extends Component {
       });
     }
   }
-  
+
   render() {
     const { markdown, isPreviewDisplayed } = this.state;
     const { handleChange, displayPreview } = this;
@@ -48,7 +48,7 @@ class App extends Component {
 }
 
 const placeholder =
-`# Welcome to my React Markdown Previewer!
+  `# Welcome to my React Markdown Previewer!
 ## Start typing to preview your markdown text!
 
 ## This is a sub-heading...
