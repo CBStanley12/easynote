@@ -9,11 +9,35 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      notes: [
+        {
+          id: 1,
+          title: "Test Note 1",
+          preview: "Test preview one...",
+          text: "Test preview one text of note",
+          active: true
+        },
+        {
+          id: 2,
+          title: "Test Note 2",
+          preview: "Test preview two...",
+          text: "Test preview two text of note",
+          active: false
+        },
+        {
+          id: 3,
+          title: "Test Note 3",
+          preview: "Test preview three...",
+          text: "Test preview three text of note",
+          active: false
+        }
+      ],
       markdown: placeholder,
       isPreviewDisplayed: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.displayPreview = this.displayPreview.bind(this);
+    this.selectNote = this.selectNote.bind(this);
   }
 
   handleChange(e) {
@@ -34,14 +58,29 @@ class App extends Component {
     }
   }
 
+  // Function to display the currently selected note
+  selectNote(e) {
+    let newNotes = this.state.notes;
+
+    for (let note of newNotes) {
+      note.active = false;
+
+      if (note.id === parseInt(e.currentTarget.id)) {
+        note.active = true;
+      }
+    }
+
+    this.setState({ notes: newNotes });
+  }
+
   render() {
-    const { markdown, isPreviewDisplayed } = this.state;
-    const { handleChange, displayPreview } = this;
+    const { notes, markdown, isPreviewDisplayed } = this.state;
+    const { handleChange, displayPreview, selectNote } = this;
 
     return (
       <div className="layout-container">
         <Header click={displayPreview} isPreviewDisplayed={isPreviewDisplayed} />
-        <Sidebar />
+        <Sidebar notes={notes} click={selectNote} />
         <Editor markdown={markdown} onChange={handleChange} isPreviewDisplayed={isPreviewDisplayed} />
       </div>
     );
@@ -54,7 +93,7 @@ const placeholder =
 
 ## This is a sub-heading...
 ### And here's some other cool stuff:
-  
+
 Heres some code, \`<div></div>\`, between 2 backticks.
 
 \`\`\`
@@ -66,7 +105,7 @@ function anotherExample(firstLine, lastLine) {
   }
 }
 \`\`\`
-  
+
 You can also make text **bold**... whoa!
 Or _italic_.
 Or... wait for it... **_both!_**
@@ -78,7 +117,7 @@ There's also [links](https://www.freecodecamp.com), and
 And if you want to get really crazy, even tables:
 
 Wild Header | Crazy Header | Another Header?
------------- | ------------- | ------------- 
+------------ | ------------- | -------------
 Your content can | be here, and it | can be here....
 And here. | Okay. | I think we get it.
 
@@ -89,7 +128,7 @@ And here. | Okay. | I think we get it.
 
 
 1. And there are numbererd lists too.
-1. Use just 1s if you want! 
+1. Use just 1s if you want!
 1. But the list goes on...
 - Even if you use dashes or asterisks.
 * And last but not least, let's not forget embedded images:
