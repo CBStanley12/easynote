@@ -16,7 +16,6 @@
 
 .layout-sidebar {
     grid-area: sidebar;
-    overflow: scroll;
 
     border-right: 1px solid #ccc;
 }
