@@ -18,3 +18,9 @@ button {
   color: inherit;
   padding: 0;
 }
+
+textarea {
+  border: none;
+  resize: none;
+  outline: none;
+}
