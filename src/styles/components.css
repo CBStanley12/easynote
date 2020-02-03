@@ -30,6 +30,7 @@
 }
 
 .sidebar_notes {
+    height: calc(100% - 3.5rem);
     overflow-y: auto;
 }
 
