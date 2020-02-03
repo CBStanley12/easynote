@@ -47,15 +47,9 @@ class App extends Component {
   }
 
   displayPreview() {
-    if (!this.state.isPreviewDisplayed) {
-      this.setState({
-        isPreviewDisplayed: true
-      });
-    } else {
-      this.setState({
-        isPreviewDisplayed: false
-      });
-    }
+    this.setState({
+      isPreviewDisplayed: !this.state.isPreviewDisplayed
+    })
   }
 
   // Function to display the currently selected note
@@ -76,12 +70,19 @@ class App extends Component {
   render() {
     const { notes, markdown, isPreviewDisplayed } = this.state;
     const { handleChange, displayPreview, selectNote } = this;
+    let content;
+
+    if (isPreviewDisplayed) {
+      content = <Preview markdown={markdown} />;
+    } else {
+      content = <Editor markdown={markdown} onChange={handleChange} />;
+    }
 
     return (
       <div className="layout-container">
         <Header click={displayPreview} isPreviewDisplayed={isPreviewDisplayed} />
         <Sidebar notes={notes} click={selectNote} />
-        <Editor markdown={markdown} onChange={handleChange} isPreviewDisplayed={isPreviewDisplayed} />
+        {content}
       </div>
     );
   }

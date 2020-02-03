@@ -9,18 +9,15 @@
 
 .layout-header {
     grid-area: header;
-
     padding: 0 1rem;
     border-bottom: 1px solid #ccc;
 }
 
 .layout-sidebar {
     grid-area: sidebar;
-
     border-right: 1px solid #ccc;
 }
 
 .layout-content {
     grid-area: content;
-    overflow: scroll;
 }
