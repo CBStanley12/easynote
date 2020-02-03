@@ -1,11 +1,5 @@
 import React from 'react';
 
-/*
-    TODO: Setting toggle to change theme (system, light, dark)
-    TODO: Setting to choose preferred font (serif, sans-serif, monospace)
-    TODO: Setting to choose preferred color scheme
-*/
-
 const Menu = ({ isMenuDisplayed }) => {
     return (
         <div className="layout-menu menu" data-active={isMenuDisplayed ? "is-active" : ""}>
