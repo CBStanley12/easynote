@@ -10,10 +10,10 @@ renderer.link = function (href, title, text) {
     return `<a target="_blank" href="${href}">${text}</a>`;
 }
 
-const Preview = ({ markdown }) => {
+const Preview = ({ textContent }) => {
     return (
         <div className="layout-content content">
-            <div dangerouslySetInnerHTML={{ __html: marked(markdown, { renderer: renderer }) }} />
+            <div dangerouslySetInnerHTML={{ __html: marked(textContent, { renderer: renderer }) }} />
         </div>
     )
 }

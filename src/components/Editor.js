@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Editor = ({ markdown, onChange }) => {
+const Editor = ({ textContent, onChange }) => {
     return (
         <div className="layout-content">
-            <textarea className="content" value={markdown} onChange={onChange} type="text" rows="30" />
+            <textarea className="content" value={textContent} onChange={onChange} type="text" rows="30" />
         </div>
     )
 }

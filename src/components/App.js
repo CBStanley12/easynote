@@ -14,7 +14,7 @@ class App extends Component {
           id: 1,
           title: "Test Note 1",
           preview: "Test preview one...",
-          text: "Test preview one text of note",
+          text: placeholder,
           active: true
         },
         {
@@ -32,7 +32,6 @@ class App extends Component {
           active: false
         }
       ],
-      markdown: placeholder,
       isPreviewDisplayed: false
     }
     this.handleChange = this.handleChange.bind(this);
@@ -68,14 +67,18 @@ class App extends Component {
   }
 
   render() {
-    const { notes, markdown, isPreviewDisplayed } = this.state;
+    const { notes, isPreviewDisplayed } = this.state;
     const { handleChange, displayPreview, selectNote } = this;
-    let content;
+    let content, noteText;
+
+    for (let note of notes) {
+      if (note.active) { noteText = note.text; }
+    }
 
     if (isPreviewDisplayed) {
-      content = <Preview markdown={markdown} />;
+      content = <Preview textContent={noteText} />;
     } else {
-      content = <Editor markdown={markdown} onChange={handleChange} />;
+      content = <Editor textContent={noteText} onChange={handleChange} />;
     }
 
     return (
