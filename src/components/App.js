@@ -40,7 +40,6 @@ class App extends Component {
   }
 
   /*
-    TODO: Function to toggle the sidebar
     TODO: Functions to retrieve/store notes in localStorage
   */
 
@@ -134,8 +133,8 @@ class App extends Component {
 
     return (
       <div className="layout-container">
-        <Header togglePreview={togglePreview} deleteNote={deleteNote} isPreviewDisplayed={isPreviewDisplayed} />
         <Sidebar notes={notes} activeNote={activeNote} selectNote={selectNote} newNote={createNewNote} />
+        <Header togglePreview={togglePreview} deleteNote={deleteNote} isPreviewDisplayed={isPreviewDisplayed} />
         {content}
       </div>
     );

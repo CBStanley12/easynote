@@ -21,3 +21,12 @@
 .layout-content {
     grid-area: content;
 }
+
+.layout-sidebar[data-active="is-hidden"] {
+    display: none;
+}
+
+.layout-sidebar[data-active="is-hidden"] ~ .layout-content,
+.layout-sidebar[data-active="is-hidden"] ~ .layout-header {
+    grid-column: span 2;
+}
