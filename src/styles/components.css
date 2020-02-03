@@ -25,7 +25,7 @@
     justify-content: space-between;
 
     height: 3.5rem;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #dcdcde;
     padding: 0 0.7rem;
 }
 
@@ -34,9 +34,10 @@
 }
 
 .note {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #dcdcde;
     cursor: pointer;
-    max-height: 5rem;
+    min-height: 2.6rem;
+    max-height: 3.5rem;
     padding: 0.7rem;
 }
 
@@ -54,7 +55,10 @@
     white-space: nowrap;
 }
 
-.note-title { font-size: 1rem; }
+.note-title {
+    font-size: 1rem;
+    font-weight: 400;
+}
 
 .note-preview { font-size: 0.8rem; }
 

@@ -10,12 +10,12 @@
 .layout-header {
     grid-area: header;
     padding: 0 1rem;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #dcdcde;
 }
 
 .layout-sidebar {
     grid-area: sidebar;
-    border-right: 1px solid #ccc;
+    border-right: 1px solid #dcdcde;
 }
 
 .layout-content {
