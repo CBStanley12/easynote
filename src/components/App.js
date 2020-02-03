@@ -40,7 +40,6 @@ class App extends Component {
 
   /*
     TODO: Function to toggle the sidebar
-    TODO: Function to create a new note
     TODO: Function to delete a note
     TODO: Functions to retrieve/store notes in localStorage
   */
@@ -82,8 +81,12 @@ class App extends Component {
     notesCopy[index].title = e.target.value ? newTitle : "New Note...";
     notesCopy[index].preview = newPreview;
 
+    // Move recently edited note to the top
+    notesCopy.splice(0, 0, notesCopy.splice(index, 1)[0]);
+
     this.setState({
-      notes: notesCopy
+      notes: notesCopy,
+      activeNote: 0
     });
   }
 
