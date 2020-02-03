@@ -34,13 +34,13 @@ class App extends Component {
     }
     this.createNewNote = this.createNewNote.bind(this);
     this.handleNoteEdit = this.handleNoteEdit.bind(this);
+    this.deleteNote = this.deleteNote.bind(this);
     this.togglePreview = this.togglePreview.bind(this);
     this.selectNote = this.selectNote.bind(this);
   }
 
   /*
     TODO: Function to toggle the sidebar
-    TODO: Function to delete a note
     TODO: Functions to retrieve/store notes in localStorage
   */
 
@@ -48,7 +48,7 @@ class App extends Component {
   // Function to create a new note
   createNewNote() {
     let notesCopy = this.state.notes;
-    let lastID = notesCopy[notesCopy.length - 1].id;
+    let lastID = (notesCopy.length > 0) ? notesCopy[notesCopy.length - 1].id : 0;
 
     let newNote = {
       id: (lastID + 1),
@@ -90,6 +90,19 @@ class App extends Component {
     });
   }
 
+  // Function to delete a note
+  deleteNote() {
+    let notesCopy = this.state.notes;
+    let index = this.state.activeNote;
+
+    notesCopy.splice(index, 1);
+
+    this.setState({
+      notes: notesCopy,
+      activeNote: 0
+    })
+  }
+
   // Function to toggle the markdown preview
   togglePreview() {
     this.setState({
@@ -108,20 +121,21 @@ class App extends Component {
 
   render() {
     const { notes, activeNote, isPreviewDisplayed } = this.state;
-    const { handleNoteEdit, togglePreview, selectNote, createNewNote } = this;
+    const { handleNoteEdit, togglePreview, deleteNote, selectNote, createNewNote } = this;
 
     let content;
+    let textContent = (notes.length > 0) ? notes[activeNote].text : "";
 
     if (isPreviewDisplayed) {
-      content = <Preview textContent={notes[activeNote].text} />;
+      content = <Preview textContent={textContent} />;
     } else {
-      content = <Editor textContent={notes[activeNote].text} onChange={handleNoteEdit} />;
+      content = <Editor textContent={textContent} notes={notes} onChange={handleNoteEdit} />;
     }
 
     return (
       <div className="layout-container">
-        <Header click={togglePreview} isPreviewDisplayed={isPreviewDisplayed} />
-        <Sidebar notes={notes} activeNote={activeNote} click={selectNote} newNote={createNewNote} />
+        <Header togglePreview={togglePreview} deleteNote={deleteNote} isPreviewDisplayed={isPreviewDisplayed} />
+        <Sidebar notes={notes} activeNote={activeNote} selectNote={selectNote} newNote={createNewNote} />
         {content}
       </div>
     );

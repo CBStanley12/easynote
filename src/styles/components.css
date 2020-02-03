@@ -34,6 +34,14 @@
     overflow-y: auto;
 }
 
+.notes-empty {
+    color: gray;
+    font-weight: 400;
+    height: calc(100vh - 7rem);
+    line-height: calc(100vh - 7rem);
+    text-align: center;
+}
+
 .note {
     border-bottom: 1px solid #dcdcde;
     cursor: pointer;

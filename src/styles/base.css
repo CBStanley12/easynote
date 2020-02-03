@@ -25,3 +25,7 @@ textarea {
   resize: none;
   outline: none;
 }
+
+textarea:disabled {
+  background-color: transparent;
+}

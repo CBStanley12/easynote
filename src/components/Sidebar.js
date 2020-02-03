@@ -1,6 +1,16 @@
 import React from 'react';
 
-const Sidebar = ({ notes, activeNote, click, newNote }) => {
+const Sidebar = ({ notes, activeNote, selectNote, newNote }) => {
+    let notesContent;
+
+    if (notes.length > 0) {
+        notesContent = notes.map((note, index) => {
+            return <Note key={note.id} id={note.id} title={note.title} preview={note.preview} active={index === activeNote ? true : false} click={selectNote} />
+        });
+    } else {
+        notesContent = <h3 className="notes-empty">No Notes</h3>;
+    }
+
     return (
         <aside className="layout-sidebar sidebar">
             <header className="sidebar_header">
@@ -12,11 +22,7 @@ const Sidebar = ({ notes, activeNote, click, newNote }) => {
                 </button>
             </header>
             <div className="sidebar_notes">
-                {
-                    notes.map((note, index) => {
-                        return <Note key={note.id} id={note.id} title={note.title} preview={note.preview} active={index === activeNote ? true : false} click={click} />
-                    })
-                }
+                {notesContent}
             </div>
         </aside>
     )
