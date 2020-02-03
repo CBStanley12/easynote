@@ -55,7 +55,8 @@ class App extends Component {
 
     this.setState({
       notes: notesCopy,
-      nextID: newID + 1
+      nextID: newID + 1,
+      activeNote: 0
     });
 
     document.querySelector('textarea').focus();
