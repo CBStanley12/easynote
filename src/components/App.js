@@ -21,7 +21,11 @@ class App extends Component {
       activeNote: 0,
       nextID: 1,
       isPreviewDisplayed: false,
-      isMenuDisplayed: false
+      isMenuDisplayed: false,
+      settings: {
+        theme: "system",
+        font: "serif"
+      }
     }
     this.createNewNote = this.createNewNote.bind(this);
     this.handleNoteEdit = this.handleNoteEdit.bind(this);
@@ -30,6 +34,8 @@ class App extends Component {
     this.toggleMenu = this.toggleMenu.bind(this);
     this.selectNote = this.selectNote.bind(this);
     this.getStoredNotes = this.getStoredNotes.bind(this);
+    this.changeTheme = this.changeTheme.bind(this);
+    this.changeFont = this.changeFont.bind(this);
   }
 
   // Function to create a new note
@@ -134,9 +140,30 @@ class App extends Component {
     this.getStoredNotes();
   }
 
+  changeTheme(e) {
+    let settingsCopy = this.state.settings;
+    settingsCopy.theme = e.target.value;
+
+    this.setState({
+      settings: settingsCopy
+    })
+  }
+
+  changeFont(e) {
+    let settingsCopy = this.state.settings;
+    settingsCopy.font = e.target.value;
+
+    console.log(`Target: ${e.target.value}`);
+    console.log(`Settings: ${settingsCopy.font}`);
+
+    this.setState({
+      settings: settingsCopy
+    })
+  }
+
   render() {
-    const { notes, activeNote, isMenuDisplayed, isPreviewDisplayed } = this.state;
-    const { togglePreview, toggleMenu, createNewNote, handleNoteEdit, deleteNote, selectNote } = this;
+    const { notes, activeNote, isMenuDisplayed, isPreviewDisplayed, settings } = this.state;
+    const { togglePreview, toggleMenu, createNewNote, handleNoteEdit, deleteNote, selectNote, changeTheme, changeFont } = this;
 
     window.addEventListener("beforeunload", () => {
       localStorage.setItem("storedNotes", JSON.stringify(this.state.notes));
@@ -146,14 +173,14 @@ class App extends Component {
     let textContent = (notes.length > 0) ? notes[activeNote].text : "";
 
     if (isPreviewDisplayed) {
-      content = <Preview textContent={textContent} />;
+      content = <Preview textContent={textContent} font={settings.font} />;
     } else {
-      content = <Editor textContent={textContent} notes={notes} onChange={handleNoteEdit} />;
+      content = <Editor textContent={textContent} font={settings.font} notes={notes} onChange={handleNoteEdit} />;
     }
 
     return (
-      <div>
-        <Menu isMenuDisplayed={isMenuDisplayed} />
+      <div data-theme={settings.theme}>
+        <Menu isMenuDisplayed={isMenuDisplayed} changeTheme={changeTheme} changeFont={changeFont} />
         {isMenuDisplayed ? <div className="layout-overlay" onClick={toggleMenu}></div> : ""}
         <div className="layout-container">
           <Sidebar notes={notes} toggleMenu={toggleMenu} activeNote={activeNote} selectNote={selectNote} newNote={createNewNote} />

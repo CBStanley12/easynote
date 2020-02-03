@@ -1,4 +1,6 @@
 .layout-container {
+    background-color: var(--color-bg);
+    color: var(--color-text);
     display: grid;
     grid-template:
         "sidebar header" 3.5rem
@@ -10,16 +12,21 @@
 .layout-header {
     grid-area: header;
     padding: 0 1rem;
-    border-bottom: 1px solid #dcdcde;
+    border-bottom: 1px solid var(--accent-gray);
 }
 
 .layout-sidebar {
     grid-area: sidebar;
-    border-right: 1px solid #dcdcde;
+    border-right: 1px solid var(--accent-gray);
 }
 
 .layout-content {
     grid-area: content;
+}
+
+.layout-content, .layout-menu {
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 .layout-sidebar[data-active="is-hidden"] {
@@ -41,14 +48,17 @@
 }
 
 .layout-menu {
-    border-right: 1px solid #dcdcde;
+    border-right: 1px solid var(--accent-gray);
     left: 0;
     width: 14rem;
     z-index: 5;
 }
 
 .layout-overlay {
-    background-color: transparent;
+    background: linear-gradient(
+        var(--color-overlay),
+        var(--color-overlay)
+    );
     left: 14rem;
     width: 100vw;
     z-index: 2;
@@ -61,7 +71,6 @@
 
 .layout-menu[data-active="is-active"] ~ .layout-container {
     left: 14rem;
-    opacity: 0.25;
     position: relative;
     pointer-events: none;
     z-index: 0;

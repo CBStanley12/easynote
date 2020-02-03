@@ -19,9 +19,32 @@
 :root {
   --primary-purple: #6C5CE7;
   --primary-purple--light: #c9c4f6;
-  --accent-gray: #dcdcde;
+  --accent-gray: rgba(220, 220, 222, 1);
+
   --font-main: "Roboto";
+  --font-serif: Georgia, serif;
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+
+  --color-text: black;
+  --color-bg: white;
+  --color-select: var(--primary-purple--light);
+  --color-overlay: rgba(220, 220, 222, 0.7);
 }
+
+[data-theme="dark"] {
+  --accent-gray: rgb(99, 99, 102);
+  --color-text: rgb(229, 229, 234);
+  --color-bg: rgb(44, 44, 46);
+  --color-select: var(--primary-purple);
+  --color-overlay: rgba(99, 99, 102, 0.7);
+}
+
+[data-font="serif"] { --font-content: var(--font-serif); }
+
+[data-font="sans"] { --font-content: var(--font-sans); }
+
+[data-font="mono"] { --font-content: var(--font-mono); }
 
 
 /* || Base File Import || */

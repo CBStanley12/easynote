@@ -10,9 +10,9 @@ renderer.link = function (href, title, text) {
     return `<a target="_blank" href="${href}">${text}</a>`;
 }
 
-const Preview = ({ textContent }) => {
+const Preview = ({ textContent, font }) => {
     return (
-        <div className="layout-content content">
+        <div className="layout-content content" data-font={font}>
             <div dangerouslySetInnerHTML={{ __html: marked(textContent, { renderer: renderer }) }} />
         </div>
     )
