@@ -12,8 +12,8 @@ class App extends Component {
       notes: [
         {
           id: 1,
-          title: "Test Note 1",
-          preview: "Test preview one...",
+          title: "Welcome to my React Markdown Previewer!",
+          preview: "Start typing to preview your markdown text!",
           text: placeholder,
         },
         {
@@ -32,14 +32,27 @@ class App extends Component {
       activeNote: 0,
       isPreviewDisplayed: false
     }
-    this.handleChange = this.handleChange.bind(this);
+    this.handleNoteEdit = this.handleNoteEdit.bind(this);
     this.displayPreview = this.displayPreview.bind(this);
     this.selectNote = this.selectNote.bind(this);
   }
 
-  handleChange(e) {
+  // Function to handle editing of the current note
+  handleNoteEdit(e) {
+    let newNotes = this.state.notes;
+    let index = this.state.activeNote;
+    const regex = /#{1,}|\*{1,}/gm;
+
+    let newText = e.target.value;
+    let newTitle = e.target.value.split('\n', 1)[0].replace(regex, '');
+    let newPreview = e.target.value.substring((newTitle.length + 1)).replace(regex, '');
+
+    newNotes[index].text = newText;
+    newNotes[index].title = newTitle;
+    newNotes[index].preview = newPreview;
+
     this.setState({
-      markdown: e.target.value
+      notes: newNotes
     });
   }
 
@@ -60,14 +73,14 @@ class App extends Component {
 
   render() {
     const { notes, activeNote, isPreviewDisplayed } = this.state;
-    const { handleChange, displayPreview, selectNote } = this;
+    const { handleNoteEdit, displayPreview, selectNote } = this;
 
     let content;
 
     if (isPreviewDisplayed) {
       content = <Preview textContent={notes[activeNote].text} />;
     } else {
-      content = <Editor textContent={notes[activeNote].text} onChange={handleChange} />;
+      content = <Editor textContent={notes[activeNote].text} onChange={handleNoteEdit} />;
     }
 
     return (

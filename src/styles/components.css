@@ -36,6 +36,7 @@
 .note {
     border-bottom: 1px solid #ccc;
     cursor: pointer;
+    max-height: 5rem;
     padding: 0.7rem;
 }
 
@@ -46,7 +47,12 @@
     border-bottom: var(--primary-purple);
 }
 
-.note-title, .note-preview { margin: 0; }
+.note-title, .note-preview {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 .note-title { font-size: 1rem; }
 
