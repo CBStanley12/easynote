@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Sidebar = ({ notes, click }) => {
+const Sidebar = ({ notes, activeNote, click }) => {
     return (
         <aside className="layout-sidebar sidebar">
             <header className="sidebar_header">
@@ -13,8 +13,8 @@ const Sidebar = ({ notes, click }) => {
             </header>
             <div className="sidebar_notes">
                 {
-                    notes.map(note => {
-                        return <Note key={note.id} id={note.id} title={note.title} preview={note.preview} active={note.active} click={click} />
+                    notes.map((note, index) => {
+                        return <Note key={note.id} id={note.id} title={note.title} preview={note.preview} active={index === activeNote ? true : false} click={click} />
                     })
                 }
             </div>

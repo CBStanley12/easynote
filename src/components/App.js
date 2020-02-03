@@ -15,23 +15,21 @@ class App extends Component {
           title: "Test Note 1",
           preview: "Test preview one...",
           text: placeholder,
-          active: true
         },
         {
           id: 2,
           title: "Test Note 2",
           preview: "Test preview two...",
           text: "Test preview two text of note",
-          active: false
         },
         {
           id: 3,
           title: "Test Note 3",
           preview: "Test preview three...",
           text: "Test preview three text of note",
-          active: false
         }
       ],
+      activeNote: 0,
       isPreviewDisplayed: false
     }
     this.handleChange = this.handleChange.bind(this);
@@ -53,38 +51,29 @@ class App extends Component {
 
   // Function to display the currently selected note
   selectNote(e) {
-    let newNotes = this.state.notes;
-
-    for (let note of newNotes) {
-      note.active = false;
-
-      if (note.id === parseInt(e.currentTarget.id)) {
-        note.active = true;
+    for (let i = 0; i < this.state.notes.length; i++) {
+      if (this.state.notes[i].id === parseInt(e.currentTarget.id)) {
+        this.setState({ activeNote: i })
       }
     }
-
-    this.setState({ notes: newNotes });
   }
 
   render() {
-    const { notes, isPreviewDisplayed } = this.state;
+    const { notes, activeNote, isPreviewDisplayed } = this.state;
     const { handleChange, displayPreview, selectNote } = this;
-    let content, noteText;
 
-    for (let note of notes) {
-      if (note.active) { noteText = note.text; }
-    }
+    let content;
 
     if (isPreviewDisplayed) {
-      content = <Preview textContent={noteText} />;
+      content = <Preview textContent={notes[activeNote].text} />;
     } else {
-      content = <Editor textContent={noteText} onChange={handleChange} />;
+      content = <Editor textContent={notes[activeNote].text} onChange={handleChange} />;
     }
 
     return (
       <div className="layout-container">
         <Header click={displayPreview} isPreviewDisplayed={isPreviewDisplayed} />
-        <Sidebar notes={notes} click={selectNote} />
+        <Sidebar notes={notes} activeNote={activeNote} click={selectNote} />
         {content}
       </div>
     );
