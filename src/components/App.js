@@ -33,7 +33,7 @@ class App extends Component {
       isPreviewDisplayed: false
     }
     this.handleNoteEdit = this.handleNoteEdit.bind(this);
-    this.displayPreview = this.displayPreview.bind(this);
+    this.togglePreview = this.togglePreview.bind(this);
     this.selectNote = this.selectNote.bind(this);
   }
 
@@ -56,7 +56,8 @@ class App extends Component {
     });
   }
 
-  displayPreview() {
+  // Function to toggle the markdown preview
+  togglePreview() {
     this.setState({
       isPreviewDisplayed: !this.state.isPreviewDisplayed
     })
@@ -73,7 +74,7 @@ class App extends Component {
 
   render() {
     const { notes, activeNote, isPreviewDisplayed } = this.state;
-    const { handleNoteEdit, displayPreview, selectNote } = this;
+    const { handleNoteEdit, togglePreview, selectNote } = this;
 
     let content;
 
@@ -85,7 +86,7 @@ class App extends Component {
 
     return (
       <div className="layout-container">
-        <Header click={displayPreview} isPreviewDisplayed={isPreviewDisplayed} />
+        <Header click={togglePreview} isPreviewDisplayed={isPreviewDisplayed} />
         <Sidebar notes={notes} activeNote={activeNote} click={selectNote} />
         {content}
       </div>
