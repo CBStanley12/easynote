@@ -36,6 +36,7 @@ class App extends Component {
     this.getStoredNotes = this.getStoredNotes.bind(this);
     this.changeTheme = this.changeTheme.bind(this);
     this.changeFont = this.changeFont.bind(this);
+    this.getStoredSettings = this.getStoredSettings.bind(this);
   }
 
   // Function to create a new note
@@ -138,8 +139,10 @@ class App extends Component {
 
   componentDidMount() {
     this.getStoredNotes();
+    this.getStoredSettings();
   }
 
+  // Function to change the current theme
   changeTheme(e) {
     let settingsCopy = this.state.settings;
     settingsCopy.theme = e.target.value;
@@ -149,6 +152,7 @@ class App extends Component {
     })
   }
 
+  // Function to change the current font
   changeFont(e) {
     let settingsCopy = this.state.settings;
     settingsCopy.font = e.target.value;
@@ -161,12 +165,19 @@ class App extends Component {
     })
   }
 
+  // Function to retrieve stored settings from localStorage
+  getStoredSettings() {
+    let storedSettings = JSON.parse(localStorage.storedSettings);
+    this.setState({ settings: storedSettings })
+  }
+
   render() {
     const { notes, activeNote, isMenuDisplayed, isPreviewDisplayed, settings } = this.state;
     const { togglePreview, toggleMenu, createNewNote, handleNoteEdit, deleteNote, selectNote, changeTheme, changeFont } = this;
 
     window.addEventListener("beforeunload", () => {
-      localStorage.setItem("storedNotes", JSON.stringify(this.state.notes));
+      localStorage.setItem("storedNotes", JSON.stringify(notes));
+      localStorage.setItem("storedSettings", JSON.stringify(settings));
     });
 
     let content;
@@ -180,10 +191,10 @@ class App extends Component {
 
     return (
       <div data-theme={settings.theme}>
-        <Menu isMenuDisplayed={isMenuDisplayed} changeTheme={changeTheme} changeFont={changeFont} />
+        <Menu isMenuDisplayed={isMenuDisplayed} theme={settings.theme} font={settings.font} changeTheme={changeTheme} changeFont={changeFont} />
         {isMenuDisplayed ? <div className="layout-overlay" onClick={toggleMenu}></div> : ""}
         <div className="layout-container">
-          <Sidebar notes={notes} toggleMenu={toggleMenu} activeNote={activeNote} selectNote={selectNote} newNote={createNewNote} />
+          <Sidebar notes={notes} font={settings.font} toggleMenu={toggleMenu} activeNote={activeNote} selectNote={selectNote} newNote={createNewNote} />
           <Header togglePreview={togglePreview} deleteNote={deleteNote} isPreviewDisplayed={isPreviewDisplayed} />
           {content}
         </div>

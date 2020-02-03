@@ -55,6 +55,7 @@
 }
 
 .sidebar_notes {
+    font-family: var(--font-content);
     height: calc(100% - 3.5rem);
     overflow-y: auto;
 }

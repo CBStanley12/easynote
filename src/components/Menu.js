@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Menu = ({ isMenuDisplayed, changeTheme, changeFont }) => {
+const Menu = ({ isMenuDisplayed, theme, font, changeTheme, changeFont }) => {
     return (
         <div className="layout-menu menu" data-active={isMenuDisplayed ? "is-active" : ""}>
             <div className="menu_settings">
@@ -13,19 +13,25 @@ const Menu = ({ isMenuDisplayed, changeTheme, changeFont }) => {
 
                     <label className="settings_option" htmlFor="theme-system">
                         System
-                        <input type="radio" id="theme-system" name="theme" value="system" defaultChecked />
+                        <input type="radio" id="theme-system" name="theme" value="system"
+                            checked={theme === "system" ? true : false}
+                        />
                         <span className="settings-radio"></span>
                     </label>
 
                     <label className="settings_option" htmlFor="theme-light">
                         Light
-                        <input type="radio" id="theme-light" name="theme" value="light" />
+                        <input type="radio" id="theme-light" name="theme" value="light"
+                            checked={theme === "light" ? true : false}
+                        />
                         <span className="settings-radio"></span>
                     </label>
 
                     <label className="settings_option" htmlFor="theme-dark">
                         Dark
-                        <input type="radio" id="theme-dark" name="theme" value="dark" />
+                        <input type="radio" id="theme-dark" name="theme" value="dark"
+                            checked={theme === "dark" ? true : false}
+                        />
                         <span className="settings-radio"></span>
                     </label>
                 </div>
@@ -34,19 +40,25 @@ const Menu = ({ isMenuDisplayed, changeTheme, changeFont }) => {
 
                     <label className="settings_option" htmlFor="font-serif">
                         Serif
-                        <input type="radio" id="font-serif" name="font" value="serif" defaultChecked />
+                        <input type="radio" id="font-serif" name="font" value="serif"
+                            checked={font === "serif" ? true : false}
+                        />
                         <span className="settings-radio"></span>
                     </label>
 
                     <label className="settings_option" htmlFor="font-sans">
                         Sans-Serif
-                        <input type="radio" id="font-sans" name="font" value="sans" />
+                        <input type="radio" id="font-sans" name="font" value="sans"
+                            checked={font === "sans" ? true : false}
+                        />
                         <span className="settings-radio"></span>
                     </label>
 
                     <label className="settings_option" htmlFor="font-mono">
                         Monospace
-                        <input type="radio" id="font-mono" name="font" value="mono" />
+                        <input type="radio" id="font-mono" name="font" value="mono"
+                            checked={font === "mono" ? true : false}
+                        />
                         <span className="settings-radio"></span>
                     </label>
                 </div>
