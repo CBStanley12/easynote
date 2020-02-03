@@ -11,25 +11,14 @@ class App extends Component {
     this.state = {
       notes: [
         {
-          id: 1,
+          id: 0,
           title: "Welcome to my React Markdown Previewer!",
           preview: "Start typing to preview your markdown text!",
           text: placeholder,
-        },
-        {
-          id: 2,
-          title: "Test Note 2",
-          preview: "Test preview two...",
-          text: "Test preview two text of note",
-        },
-        {
-          id: 3,
-          title: "Test Note 3",
-          preview: "Test preview three...",
-          text: "Test preview three text of note",
         }
       ],
       activeNote: 0,
+      nextID: 1,
       isPreviewDisplayed: false
     }
     this.createNewNote = this.createNewNote.bind(this);
@@ -37,30 +26,26 @@ class App extends Component {
     this.deleteNote = this.deleteNote.bind(this);
     this.togglePreview = this.togglePreview.bind(this);
     this.selectNote = this.selectNote.bind(this);
+    this.getStoredNotes = this.getStoredNotes.bind(this);
   }
-
-  /*
-    TODO: Functions to retrieve/store notes in localStorage
-  */
-
 
   // Function to create a new note
   createNewNote() {
     let notesCopy = this.state.notes;
-    let lastID = (notesCopy.length > 0) ? notesCopy[notesCopy.length - 1].id : 0;
+    let newID = this.state.nextID;
 
     let newNote = {
-      id: (lastID + 1),
+      id: newID,
       title: "New Note...",
       preview: "",
       text: ""
     };
 
-    notesCopy.push(newNote);
+    notesCopy.unshift(newNote);
 
     this.setState({
       notes: notesCopy,
-      activeNote: (notesCopy.length - 1)
+      nextID: newID + 1
     });
 
     document.querySelector('textarea').focus();
@@ -118,9 +103,34 @@ class App extends Component {
     }
   }
 
+  // Function to retrieve stored notes in localStorage
+  getStoredNotes() {
+    let nextID = this.state.nextID;
+    let storedNotes = JSON.parse(localStorage.storedNotes);
+
+    storedNotes.forEach(note => {
+      if (note.id > nextID) {
+        nextID = (note.id + 1);
+      }
+    })
+
+    this.setState({
+      notes: JSON.parse(localStorage.storedNotes),
+      nextID: nextID
+    })
+  }
+
+  componentDidMount() {
+    this.getStoredNotes();
+  }
+
   render() {
     const { notes, activeNote, isPreviewDisplayed } = this.state;
-    const { handleNoteEdit, togglePreview, deleteNote, selectNote, createNewNote } = this;
+    const { togglePreview, createNewNote, handleNoteEdit, deleteNote, selectNote } = this;
+
+    window.addEventListener("beforeunload", () => {
+      localStorage.setItem("storedNotes", JSON.stringify(this.state.notes));
+    });
 
     let content;
     let textContent = (notes.length > 0) ? notes[activeNote].text : "";
@@ -188,6 +198,6 @@ And here. | Okay. | I think we get it.
 * And last but not least, let's not forget embedded images:
 
 ![React Logo w/ Text](https://goo.gl/Umyytc)
-`
+`;
 
 export default App;
