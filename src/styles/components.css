@@ -8,6 +8,35 @@
 .icon {
     color: var(--primary-purple);
     cursor: pointer;
+    position: relative;
+}
+
+.icon[aria-label]:after {
+    opacity: 0;
+    content: attr(aria-label);
+    padding: 4px 8px;
+    position: absolute;
+    top: 120%;
+    white-space: nowrap;
+    z-index: 20;
+    background: gray;
+    color: white;
+    border-radius: 5px;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
+
+.icon[aria-label]:hover:after {
+    opacity: 1;
+    transition-delay: 0.2s;
+}
+
+.icon-left[aria-label]:after {
+    left: -40%;
+}
+
+.icon-right[aria-label]:after {
+    right: -40%;
 }
 
 .icon-space {
@@ -15,10 +44,6 @@
 }
 
 /* || Sidebar Component Styles || */
-.sidebar {
-
-}
-
 .sidebar_header {
     display: flex;
     align-items: center;
