@@ -111,21 +111,10 @@
 .menu {
     display: grid;
     font-size: 0.9rem;
-    grid-template: 15% 1fr 15% 7% / 1fr;
+    grid-template: 1fr 15% 7% / 1fr;
 }
 
-.menu_header {
-    border-bottom: 1px solid var(--accent-gray);
-    color: var(--primary-purple);
-    flex-direction: column;
-    font-size: 1rem;
-}
-
-.menu_header h2 {
-    margin: 0;
-}
-
-.menu_header, .menu_settings, .menu_contact, .menu_footer {
+.menu_settings, .menu_contact, .menu_footer {
     display: flex;
 }
 
@@ -135,7 +124,7 @@
     padding: 0.6rem;
 }
 
-.menu_header, .menu_footer {
+.menu_footer {
     align-items: center;
     justify-content: center;
 }
@@ -191,7 +180,7 @@
     background-color: #ccc;
 }
 
-/* When the radio button is checked, add a blue background */
+/* When the radio button is checked, add a purple background */
 .settings_option input:checked ~ .settings-radio {
     background-color: var(--primary-purple);
     border: none;
