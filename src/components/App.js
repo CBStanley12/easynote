@@ -169,9 +169,6 @@ class App extends Component {
     let settingsCopy = this.state.settings;
     settingsCopy.font = e.target.value;
 
-    console.log(`Target: ${e.target.value}`);
-    console.log(`Settings: ${settingsCopy.font}`);
-
     this.setState({
       settings: settingsCopy
     })
