@@ -110,6 +110,40 @@
     width: 100%;
 }
 
+.content a { color: var(--primary-purple); }
+
+.content blockquote {
+    border-left: 3px solid var(--primary-purple);
+    padding: 0 1rem;
+}
+
+.content table,
+.content table th,
+.content table td {
+    border: 1px solid var(--primary-purple);
+    border-collapse: collapse;
+    padding: 0.3rem;
+}
+
+.content code {
+    background-color: #fdf6e3;
+    padding: 0.2rem;
+}
+
+.content pre {
+    border: 1px solid var(--primary-purple--light);
+    border-radius: 3px;
+    padding: 1rem;
+}
+
+.content pre code {
+    display: block;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+    overflow-x: auto;
+    padding: 0.4rem;
+}
+
 
 /* || Menu Component Styles || */
 .menu {
