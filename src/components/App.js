@@ -141,6 +141,17 @@ class App extends Component {
   componentDidMount() {
     this.getStoredNotes();
     this.getStoredSettings();
+
+    if (this.state.settings.theme === "system") {
+      const DARK_PREFERENCE = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const THEME_ELEM = document.querySelector("#theme");
+
+      if (DARK_PREFERENCE) {
+        THEME_ELEM.dataset.theme = "dark";
+      } else {
+        THEME_ELEM.dataset.theme = "light";
+      }
+    }
   }
 
   // Function to change the current theme
@@ -191,7 +202,7 @@ class App extends Component {
     }
 
     return (
-      <div data-theme={settings.theme}>
+      <div id="theme" data-theme={settings.theme}>
         <Menu isMenuDisplayed={isMenuDisplayed} theme={settings.theme} font={settings.font} changeTheme={changeTheme} changeFont={changeFont} />
         {isMenuDisplayed ? <div className="layout-overlay" onClick={toggleMenu}></div> : ""}
         <div className="layout-container">
