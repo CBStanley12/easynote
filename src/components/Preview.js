@@ -1,11 +1,21 @@
 import React from 'react';
-import marked from 'marked';
+import marked, { Renderer } from 'marked';
+import hljs from 'highlight.js';
 
 marked.setOptions({
-    breaks: true,
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: true,
+    smartLists: true,
+    langPrefix: 'language-',
+    highlight: function (code) {
+        return hljs.highlightAuto(code).value;
+    }
 });
 
-const renderer = new marked.Renderer();
+let renderer = new Renderer();
 renderer.link = function (href, title, text) {
     return `<a target="_blank" href="${href}">${text}</a>`;
 }

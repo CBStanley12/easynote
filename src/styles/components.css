@@ -101,7 +101,6 @@
 /* || Content Component Styles || */
 .content {
     background-color: inherit;
-    color: inherit;
     font-family: var(--font-content);
     height: 100%;
     margin: auto;
