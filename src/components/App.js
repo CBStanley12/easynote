@@ -4,6 +4,7 @@ import Editor from './Editor';
 import Preview from './Preview';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import Menu from './Menu';
 
 class App extends Component {
   constructor(props) {
@@ -19,12 +20,14 @@ class App extends Component {
       ],
       activeNote: 0,
       nextID: 1,
-      isPreviewDisplayed: false
+      isPreviewDisplayed: false,
+      isMenuDisplayed: false
     }
     this.createNewNote = this.createNewNote.bind(this);
     this.handleNoteEdit = this.handleNoteEdit.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
     this.togglePreview = this.togglePreview.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
     this.selectNote = this.selectNote.bind(this);
     this.getStoredNotes = this.getStoredNotes.bind(this);
   }
@@ -94,6 +97,13 @@ class App extends Component {
     })
   }
 
+  // Function to toggle the menu
+  toggleMenu() {
+    this.setState({
+      isMenuDisplayed: !this.state.isMenuDisplayed
+    })
+  }
+
   // Function to display the currently selected note
   selectNote(e) {
     for (let i = 0; i < this.state.notes.length; i++) {
@@ -125,8 +135,8 @@ class App extends Component {
   }
 
   render() {
-    const { notes, activeNote, isPreviewDisplayed } = this.state;
-    const { togglePreview, createNewNote, handleNoteEdit, deleteNote, selectNote } = this;
+    const { notes, activeNote, isMenuDisplayed, isPreviewDisplayed } = this.state;
+    const { togglePreview, toggleMenu, createNewNote, handleNoteEdit, deleteNote, selectNote } = this;
 
     window.addEventListener("beforeunload", () => {
       localStorage.setItem("storedNotes", JSON.stringify(this.state.notes));
@@ -142,10 +152,14 @@ class App extends Component {
     }
 
     return (
-      <div className="layout-container">
-        <Sidebar notes={notes} activeNote={activeNote} selectNote={selectNote} newNote={createNewNote} />
-        <Header togglePreview={togglePreview} deleteNote={deleteNote} isPreviewDisplayed={isPreviewDisplayed} />
-        {content}
+      <div>
+        <Menu isMenuDisplayed={isMenuDisplayed} />
+        {isMenuDisplayed ? <div className="layout-overlay" onClick={toggleMenu}></div> : ""}
+        <div className="layout-container">
+          <Sidebar notes={notes} toggleMenu={toggleMenu} activeNote={activeNote} selectNote={selectNote} newNote={createNewNote} />
+          <Header togglePreview={togglePreview} deleteNote={deleteNote} isPreviewDisplayed={isPreviewDisplayed} />
+          {content}
+        </div>
       </div>
     );
   }
