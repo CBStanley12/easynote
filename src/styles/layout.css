@@ -79,10 +79,11 @@
 @media only screen and (max-width: 900px) {
     .layout-sidebar {
         border: none;
+        display: none;
     }
 
-    .layout-sidebar {
-        display: none;
+    .layout-content {
+        height: 100%;
     }
 
     .layout-sidebar[data-active="is-active"] {
