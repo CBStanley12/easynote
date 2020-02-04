@@ -75,3 +75,29 @@
     pointer-events: none;
     z-index: 0;
 }
+
+@media only screen and (max-width: 900px) {
+    .layout-sidebar {
+        border: none;
+    }
+
+    .layout-sidebar {
+        display: none;
+    }
+
+    .layout-sidebar[data-active="is-active"] {
+        display: block;
+        grid-column: span 2;
+        width: 100vw;
+    }
+
+    .layout-header,
+    .layout-sidebar[data-active="is-hidden"] ~ .layout-container {
+        grid-column: span 2;
+    }
+
+    .layout-sidebar[data-active="is-active"] ~ .layout-header,
+    .layout-sidebar[data-active="is-active"] ~ .layout-content {
+        display: none;
+    }
+}

@@ -54,10 +54,17 @@ class App extends Component {
     notesCopy.unshift(newNote);
 
     this.setState({
+      isPreviewDisplayed: false,
       notes: notesCopy,
       nextID: newID + 1,
       activeNote: 0
     });
+
+    if (window.innerWidth <= 900) {
+      let sidebar = document.querySelector('.layout-sidebar');
+
+      sidebar.dataset.active = "is-hidden";
+    }
 
     document.querySelector('textarea').focus();
   }
@@ -96,6 +103,12 @@ class App extends Component {
       notes: notesCopy,
       activeNote: 0
     })
+
+    if (window.innerWidth <= 900) {
+      let sidebar = document.querySelector('.layout-sidebar');
+
+      sidebar.dataset.active = "is-active";
+    }
   }
 
   // Function to toggle the markdown preview
@@ -114,11 +127,23 @@ class App extends Component {
 
   // Function to display the currently selected note
   selectNote(e) {
+    if (window.innerWidth <= 900) {
+      let sidebar = document.querySelector('.layout-sidebar');
+
+      sidebar.dataset.active = "is-hidden";
+    }
+
     for (let i = 0; i < this.state.notes.length; i++) {
       if (this.state.notes[i].id === parseInt(e.currentTarget.id)) {
         this.setState({ activeNote: i })
       }
     }
+
+    this.setState({
+      isPreviewDisplayed: false
+    })
+
+    document.querySelector('textarea').focus();
   }
 
   // Function to retrieve stored notes in localStorage
