@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import marked, { Renderer } from 'marked';
 import hljs from 'highlight.js';
+import 'highlight.js/styles/vs.css';
 
 marked.setOptions({
     gfm: true,
@@ -10,7 +11,7 @@ marked.setOptions({
     sanitize: true,
     smartLists: true,
     langPrefix: 'language-',
-    highlight: function (code) {
+    highlight: (code) => {
         return hljs.highlightAuto(code).value;
     }
 });
@@ -21,6 +22,16 @@ renderer.link = function (href, title, text) {
 }
 
 const Preview = ({ textContent, font }) => {
+    useEffect(() => {
+        console.log('Component did mount');
+        hljs.initHighlightingOnLoad();
+
+        const codeList = document.querySelectorAll('pre code');
+        codeList.forEach((code) => {
+            return hljs.highlightBlock(code);
+        });
+    }, []);
+
     return (
         <div className="layout-content content" data-font={font}>
             <div dangerouslySetInnerHTML={{ __html: marked(textContent, { renderer: renderer }) }} />

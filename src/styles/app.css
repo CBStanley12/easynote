@@ -28,6 +28,8 @@
 
   --color-text: black;
   --color-bg: white;
+  --color-code-bg: #f8f8f8; /* #f8f8f8 */
+  --color-code-border: var(--accent-gray);
   --color-select: var(--primary-purple--light);
   --color-overlay: rgba(220, 220, 222, 0.7);
 }
@@ -36,6 +38,8 @@
   --accent-gray: rgb(99, 99, 102);
   --color-text: rgb(229, 229, 234);
   --color-bg: rgb(44, 44, 46);
+  --color-code-bg: #fdf6e3; /* rgba(253, 246, 227, 0.9) */
+  --color-code-border: var(--accent-gray); /* rgba(253, 246, 227, 1) */
   --color-select: var(--primary-purple);
   --color-overlay: rgba(99, 99, 102, 0.7);
 }
