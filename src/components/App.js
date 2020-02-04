@@ -191,11 +191,11 @@ class App extends Component {
     let settingsCopy = this.state.settings;
     settingsCopy.theme = e.target.value;
 
-    if (settingsCopy.theme === "system") {
-      const DARK_PREFERENCE = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const THEME_ELEM = document.querySelector("#theme");
+    const DARK_PREFERENCE = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const THEME_ELEM = document.querySelector("#theme");
 
-      if (DARK_PREFERENCE) {
+    if (settingsCopy.theme === "system") {
+      if (window.matchMedia && DARK_PREFERENCE) {
         THEME_ELEM.dataset.theme = "dark";
       } else {
         THEME_ELEM.dataset.theme = "light";
@@ -227,7 +227,14 @@ class App extends Component {
     const { notes, activeNote, isMenuDisplayed, isPreviewDisplayed, settings } = this.state;
     const { togglePreview, toggleMenu, createNewNote, handleNoteEdit, deleteNote, selectNote, changeTheme, changeFont } = this;
 
+    // Save notes and settings to localStorage before unloading
     window.addEventListener("beforeunload", () => {
+      localStorage.setItem("storedNotes", JSON.stringify(notes));
+      localStorage.setItem("storedSettings", JSON.stringify(settings));
+    });
+
+    // Unload event for mobile (iOS) browsers
+    window.addEventListener("unload", () => {
       localStorage.setItem("storedNotes", JSON.stringify(notes));
       localStorage.setItem("storedSettings", JSON.stringify(settings));
     });
