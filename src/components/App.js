@@ -191,6 +191,17 @@ class App extends Component {
     let settingsCopy = this.state.settings;
     settingsCopy.theme = e.target.value;
 
+    if (settingsCopy.theme === "system") {
+      const DARK_PREFERENCE = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const THEME_ELEM = document.querySelector("#theme");
+
+      if (DARK_PREFERENCE) {
+        THEME_ELEM.dataset.theme = "dark";
+      } else {
+        THEME_ELEM.dataset.theme = "light";
+      }
+    }
+
     this.setState({
       settings: settingsCopy
     })
