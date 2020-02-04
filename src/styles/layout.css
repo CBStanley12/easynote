@@ -12,19 +12,21 @@
 }
 
 .layout-header {
+    border-bottom: 1px solid var(--accent-gray);
     grid-area: header;
     padding: 0 1rem;
-    border-bottom: 1px solid var(--accent-gray);
 }
 
 .layout-sidebar {
-    grid-area: sidebar;
     border-right: 1px solid var(--accent-gray);
+    grid-area: sidebar;
 }
 
 .layout-content {
     grid-area: content;
-    overflow-y: auto;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
 }
 
 .layout-content, .layout-menu {
