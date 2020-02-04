@@ -32,8 +32,8 @@ const Preview = ({ textContent, font }) => {
     }, []);
 
     return (
-        <div className="layout-content content" data-font={font}>
-            <div dangerouslySetInnerHTML={{ __html: marked(textContent, { renderer: renderer }) }} />
+        <div className="layout-content" data-font={font}>
+            <div className="content" dangerouslySetInnerHTML={{ __html: marked(textContent, { renderer: renderer }) }} />
         </div>
     )
 }

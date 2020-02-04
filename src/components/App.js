@@ -143,7 +143,9 @@ class App extends Component {
       isPreviewDisplayed: false
     })
 
-    document.querySelector('textarea').focus();
+    setTimeout(() => {
+      document.querySelector('textarea').focus();
+    }, 300);
   }
 
   // Function to retrieve stored notes in localStorage
@@ -167,8 +169,10 @@ class App extends Component {
     if (localStorage.storedNotes) { this.getStoredNotes(); }
     if (localStorage.storedSettings) { this.getStoredSettings(); }
 
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    if (window.innerWidth <= 900) {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
 
     if (this.state.settings.theme === "system") {
       const DARK_PREFERENCE = window.matchMedia("(prefers-color-scheme: dark)").matches;

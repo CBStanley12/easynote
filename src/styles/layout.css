@@ -8,6 +8,7 @@
         / 20rem 1fr;
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
+    overflow: hidden;
 }
 
 .layout-header {
@@ -23,6 +24,7 @@
 
 .layout-content {
     grid-area: content;
+    overflow-y: auto;
 }
 
 .layout-content, .layout-menu {
