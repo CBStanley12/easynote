@@ -23,7 +23,6 @@ renderer.link = function (href, title, text) {
 
 const Preview = ({ textContent, font }) => {
     useEffect(() => {
-        console.log('Component did mount');
         hljs.initHighlightingOnLoad();
 
         const codeList = document.querySelectorAll('pre code');
