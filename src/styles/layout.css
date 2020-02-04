@@ -7,6 +7,7 @@
         "sidebar content" 1fr
         / 20rem 1fr;
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
 }
 
 .layout-header {
