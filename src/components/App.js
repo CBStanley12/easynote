@@ -42,10 +42,10 @@ class App extends Component {
   // Function to create a new note
   createNewNote() {
     let notesCopy = this.state.notes;
-    let newID = this.state.nextID;
+    let ID = "_" + Math.random().toString(36).substring(2, 12);
 
     let newNote = {
-      id: newID,
+      id: ID,
       title: "New Note...",
       preview: "",
       text: ""
@@ -56,7 +56,6 @@ class App extends Component {
     this.setState({
       isPreviewDisplayed: false,
       notes: notesCopy,
-      nextID: newID + 1,
       activeNote: 0
     });
 
@@ -222,6 +221,8 @@ class App extends Component {
     let storedSettings = JSON.parse(localStorage.storedSettings);
     this.setState({ settings: storedSettings })
   }
+
+  // Function to save notes and settings to localStorage
 
   render() {
     const { notes, activeNote, isMenuDisplayed, isPreviewDisplayed, settings } = this.state;
