@@ -1,6 +1,6 @@
 /*
 **
-**  CONTENT
+**  TABLE OF CONTENTS
 **
 **  Font...................................Google font import
 **  Variables..............................Color and font variables
@@ -17,31 +17,41 @@
 
 /* || Variables || */
 :root {
-  --primary-purple: #6C5CE7;
-  --primary-purple--light: #c9c4f6;
-  --accent-gray: rgba(220, 220, 222, 1);
+  --purple: rgb(108, 92, 231);
+  --purple--light: rgb(201, 196, 246);
+  --white: #FAFAFA;
+  --gray: rgb(99, 99, 102);
+  --gray--light: rgb(204, 204, 204);
+  --gray--lightest: rgb(248, 248, 248); /* #f8f8f8 */
+  --gray--dark: rgb(44, 44, 46);
+  --gray--darkest: rgb(28, 28, 30);
+  --manilla: rgb(253, 246, 227); /* #fdf6e3 */
+
+  --color-primary: var(--purple);
+  --color-secondary: var(--purple--light);
+  --color-accent: var(--gray--light);
+  --color-text: var(--gray--darkest);
+  --color-bg: white;
+  --color-bg--alt: var(--white);
+  --color-bg--code: var(--manilla);
+  --color-select: var(--color-secondary);
+  --color-overlay: rgba(255, 255, 255, 0.8);
 
   --font-main: "Roboto";
   --font-serif: Georgia, serif;
   --font-sans: Arial, Helvetica, sans-serif;
   --font-mono: "Courier New", Courier, monospace;
-
-  --color-text: black;
-  --color-bg: white;
-  --color-code-bg: #f8f8f8; /* #f8f8f8 */
-  --color-code-border: var(--accent-gray);
-  --color-select: var(--primary-purple--light);
-  --color-overlay: rgba(220, 220, 222, 0.7);
 }
 
 [data-theme="dark"] {
-  --accent-gray: rgb(99, 99, 102);
-  --color-text: rgb(229, 229, 234);
-  --color-bg: rgb(44, 44, 46);
-  --color-code-bg: #fdf6e3; /* rgba(253, 246, 227, 0.9) */
-  --color-code-border: var(--accent-gray); /* rgba(253, 246, 227, 1) */
-  --color-select: var(--primary-purple);
-  --color-overlay: rgba(99, 99, 102, 0.7);
+  --color-primary: var(--purple);
+  --color-secondary: var(--purple--light);
+  --color-accent: var(--gray);
+  --color-text: white;
+  --color-bg: var(--gray--dark);
+  --color-bg--alt: var(--gray--darkest);
+  --color-select: var(--color-primary);
+  --color-overlay: rgba(99, 99, 102, 0.8);
 }
 
 [data-font="serif"] { --font-content: var(--font-serif); }

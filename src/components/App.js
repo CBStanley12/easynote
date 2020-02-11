@@ -252,7 +252,7 @@ class App extends Component {
     return (
       <div id="theme" data-theme={settings.theme}>
         <Menu isMenuDisplayed={isMenuDisplayed} theme={settings.theme} font={settings.font} changeTheme={changeTheme} changeFont={changeFont} />
-        {isMenuDisplayed ? <div className="layout-overlay" onClick={toggleMenu}></div> : ""}
+        <div className="layout-overlay" data-display={isMenuDisplayed ? "is-active" : "is-hidden"} onClick={toggleMenu}></div>
         <div className="layout-container">
           <Sidebar notes={notes} font={settings.font} toggleMenu={toggleMenu} activeNote={activeNote} selectNote={selectNote} newNote={createNewNote} />
           <Header togglePreview={togglePreview} deleteNote={deleteNote} isPreviewDisplayed={isPreviewDisplayed} />
