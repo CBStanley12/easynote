@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Sidebar = ({ notes, toggleMenu, activeNote, selectNote, newNote }) => {
+const Sidebar = ({ notes, toggleMenu, selectNote, newNote }) => {
     let notesContent;
 
     if (notes.length > 0) {
-        notesContent = notes.map((note, index) => {
-            return <Note key={note.id} id={note.id} title={note.title} preview={note.preview} active={index === activeNote ? true : false} click={selectNote} />
+        notesContent = notes.map(note => {
+            return <Note key={note.id} id={note.id} text={note.text} active={note.active} click={selectNote} />
         });
     } else {
         notesContent = <h3 className="sidebar_notes--empty">No Notes</h3>;
@@ -28,7 +28,23 @@ const Sidebar = ({ notes, toggleMenu, activeNote, selectNote, newNote }) => {
     )
 }
 
-const Note = ({ id, title, preview, active, click }) => {
+const Note = ({ id, text, active, click }) => {
+    const REGEX = /#{1,}|\*{1,}/gm;
+
+    const [title, setTitle] = useState("");
+    useEffect(() => {
+        let newTitle = text.split('\n', 1)[0].replace(REGEX, '');
+
+        return setTitle(newTitle);
+    });
+
+    const [preview, setPreview] = useState("");
+    useEffect(() => {
+        let newPreview = text.substring((title.length + 1)).replace(REGEX, '');
+
+        return setPreview(newPreview);
+    });
+
     return (
         <div id={id} className="note" data-state={active ? "is-active" : ""} onClick={click}>
             <h3 className="note_title">{title}</h3>

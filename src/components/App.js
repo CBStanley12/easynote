@@ -13,13 +13,9 @@ class App extends Component {
       notes: [
         {
           id: 0,
-          title: "Welcome to my React Markdown Previewer!",
-          preview: "Start typing to preview your markdown text!",
-          text: placeholder,
+          text: placeholder
         }
       ],
-      activeNote: 0,
-      nextID: 1,
       isPreviewDisplayed: false,
       isMenuDisplayed: false,
       settings: {
@@ -72,15 +68,10 @@ class App extends Component {
   handleNoteEdit(e) {
     let notesCopy = this.state.notes;
     let index = this.state.activeNote;
-    const regex = /#{1,}|\*{1,}/gm;
 
     let newText = e.target.value;
-    let newTitle = e.target.value.split('\n', 1)[0].replace(regex, '');
-    let newPreview = e.target.value.substring((newTitle.length + 1)).replace(regex, '');
 
     notesCopy[index].text = newText;
-    notesCopy[index].title = e.target.value ? newTitle : "New Note...";
-    notesCopy[index].preview = newPreview;
 
     // Move recently edited note to the top
     notesCopy.splice(0, 0, notesCopy.splice(index, 1)[0]);
@@ -241,7 +232,7 @@ class App extends Component {
     });
 
     let content;
-    let textContent = (notes.length > 0) ? notes[activeNote].text : "";
+    let textContent = (notes.length > 0) ? notes[0].text : "";
 
     if (isPreviewDisplayed) {
       content = <Preview textContent={textContent} />;
