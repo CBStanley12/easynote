@@ -244,17 +244,17 @@ class App extends Component {
     let textContent = (notes.length > 0) ? notes[activeNote].text : "";
 
     if (isPreviewDisplayed) {
-      content = <Preview textContent={textContent} font={settings.font} />;
+      content = <Preview textContent={textContent} />;
     } else {
-      content = <Editor textContent={textContent} font={settings.font} notes={notes} onChange={handleNoteEdit} />;
+      content = <Editor textContent={textContent} notes={notes} onChange={handleNoteEdit} />;
     }
 
     return (
-      <div id="theme" data-theme={settings.theme}>
+      <div id="theme" data-theme={settings.theme} data-font={settings.font}>
         <Menu isMenuDisplayed={isMenuDisplayed} theme={settings.theme} font={settings.font} changeTheme={changeTheme} changeFont={changeFont} />
         <div className="layout-overlay" data-display={isMenuDisplayed ? "is-active" : "is-hidden"} onClick={toggleMenu}></div>
         <div className="layout-container">
-          <Sidebar notes={notes} font={settings.font} toggleMenu={toggleMenu} activeNote={activeNote} selectNote={selectNote} newNote={createNewNote} />
+          <Sidebar notes={notes} toggleMenu={toggleMenu} activeNote={activeNote} selectNote={selectNote} newNote={createNewNote} />
           <Header togglePreview={togglePreview} deleteNote={deleteNote} isPreviewDisplayed={isPreviewDisplayed} />
           {content}
         </div>

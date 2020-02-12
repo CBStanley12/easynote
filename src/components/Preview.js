@@ -21,7 +21,7 @@ renderer.link = function (href, title, text) {
     return `<a target="_blank" href="${href}">${text}</a>`;
 }
 
-const Preview = ({ textContent, font }) => {
+const Preview = ({ textContent }) => {
     useEffect(() => {
         hljs.initHighlightingOnLoad();
 
@@ -32,7 +32,7 @@ const Preview = ({ textContent, font }) => {
     }, []);
 
     return (
-        <div className="layout-content" data-font={font}>
+        <div className="layout-content">
             <div className="content" dangerouslySetInnerHTML={{ __html: marked(textContent, { renderer: renderer }) }} />
         </div>
     )
