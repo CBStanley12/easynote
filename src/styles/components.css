@@ -21,9 +21,8 @@
 **  MENU
 **      Main........................................Main component styles
 **      Menu Section................................Styles for menu sections
-**      Settings....................................Styles for settings options
 **      Menu Icon...................................Styles for menu icons
-**      Menu Link...................................Styles for menu links
+**      Settings....................................Styles for settings options
 **
 **  SIDEBAR
 **      Header......................................Styles for sidebar header
@@ -199,8 +198,45 @@
     width: 100%;
 }
 
+.menu_section-link {
+    color: inherit;
+    line-height: 1.5rem;
+    margin-bottom: 0.3rem;
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+}
+
 .menu_section-copyright {
     color: var(--gray);
+}
+
+.menu_section-link,
+.menu_section-copyright {
+    text-decoration: none;
+}
+
+.menu_section-link:hover,
+.menu_section-copyright:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/* Menu Icon */
+.menu-icon {
+    align-self: center;
+    display: inline-flex;
+    height: 1rem;
+    margin-right: 0.4rem;
+    position: relative;
+    top: 0.125rem;
+    width: 1rem;
+}
+
+.menu-icon--title {
+    height: 1.3rem;
+    top: -0.07rem;
+    width: 1.3rem;
 }
 
 /* Settings */
@@ -241,37 +277,6 @@
 .settings_option input:checked ~ .settings_option-radio {
     background-color: var(--color-primary);
     border: none;
-}
-
-/* Menu Icon */
-.menu-icon {
-    align-self: center;
-    display: inline-flex;
-    height: 1rem;
-    margin-right: 0.4rem;
-    position: relative;
-    top: 0.125rem;
-    width: 1rem;
-}
-
-.menu-icon--title {
-    height: 1.3rem;
-    top: -0.07rem;
-    width: 1.3rem;
-}
-
-/* Menu Link */
-.menu-link {
-    color: inherit;
-    line-height: 1.5rem;
-    position: relative;
-    text-decoration: none;
-    width: 100%;
-}
-
-.menu-link:hover {
-    color: var(--color-primary);
-    text-decoration: underline;
 }
 
 
@@ -347,10 +352,11 @@
 
     .content img { max-width: 100%; }
 
-    /* Menu Component */
-    .menu { font-size: 1rem; }
 
-    .settings { margin-top: 2rem; }
+    /* Menu Component */
+    .menu { grid-template: 1fr 9rem 3rem / 1fr; }
+
+    .settings { margin-top: 0.5rem; }
 
     .settings_option { padding: 0.5rem 0.4rem; }
 
@@ -359,9 +365,10 @@
         right: 0.5rem;
     }
 
+    .menu_section-link { font-size: 1rem; }
+
     .menu_section-copyright { font-size: 0.8rem; }
 
-    .menu-link { font-size: 0.8rem; }
 
     /* Sidebar Component */
     .note[data-state="is-active"] {
