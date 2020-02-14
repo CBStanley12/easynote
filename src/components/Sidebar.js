@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-const Sidebar = ({ notes, toggleMenu, selectNote, newNote }) => {
+const Sidebar = ({ notes, activeNote, toggleMenu, selectNote, newNote }) => {
     let notesContent;
 
     if (notes.length > 0) {
         notesContent = notes.map(note => {
-            return <Note key={note.id} id={note.id} text={note.text} active={note.active} click={selectNote} />
+            return <Note key={note.id} id={note.id} text={note.text} active={note.id === activeNote ? true : false} click={selectNote} />
         });
     } else {
         notesContent = <h3 className="sidebar_notes--empty">No Notes</h3>;
@@ -30,17 +30,18 @@ const Sidebar = ({ notes, toggleMenu, selectNote, newNote }) => {
 
 const Note = ({ id, text, active, click }) => {
     const REGEX = /#{1,}|\*{1,}/gm;
+    let altText = text.replace(REGEX, '');
 
     const [title, setTitle] = useState("");
     useEffect(() => {
-        let newTitle = text.split('\n', 1)[0].replace(REGEX, '');
+        let newTitle = text ? altText.split('\n', 1)[0] : "New Note...";
 
         return setTitle(newTitle);
     });
 
     const [preview, setPreview] = useState("");
     useEffect(() => {
-        let newPreview = text.substring((title.length + 1)).replace(REGEX, '');
+        let newPreview = text ? altText.substring((title.length + 1)) : "";
 
         return setPreview(newPreview);
     });

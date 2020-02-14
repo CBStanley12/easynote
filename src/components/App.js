@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import '../styles/app.css';
 import Editor from './Editor';
-import Preview from './Preview';
 import Header from './Header';
-import Sidebar from './Sidebar';
 import Menu from './Menu';
+import Preview from './Preview';
+import Sidebar from './Sidebar';
 
 class App extends Component {
   constructor(props) {
@@ -12,10 +12,11 @@ class App extends Component {
     this.state = {
       notes: [
         {
-          id: 0,
+          id: "_jig5f12qvx",
           text: placeholder
         }
       ],
+      activeNote: "_jig5f12qvx",
       isPreviewDisplayed: false,
       isMenuDisplayed: false,
       settings: {
@@ -23,82 +24,82 @@ class App extends Component {
         font: "serif"
       }
     }
-    this.createNewNote = this.createNewNote.bind(this);
-    this.handleNoteEdit = this.handleNoteEdit.bind(this);
+
+    this.createNote = this.createNote.bind(this);
+    this.editNote = this.editNote.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
+    this.selectNote = this.selectNote.bind(this);
+
     this.togglePreview = this.togglePreview.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
-    this.selectNote = this.selectNote.bind(this);
     this.getStoredNotes = this.getStoredNotes.bind(this);
     this.changeTheme = this.changeTheme.bind(this);
     this.changeFont = this.changeFont.bind(this);
     this.getStoredSettings = this.getStoredSettings.bind(this);
   }
 
-  // Function to create a new note
-  createNewNote() {
+  // Function to handle creating a new note
+  createNote() {
     let notesCopy = this.state.notes;
     let ID = "_" + Math.random().toString(36).substring(2, 12);
 
-    let newNote = {
-      id: ID,
-      title: "New Note...",
-      preview: "",
-      text: ""
-    };
-
+    let newNote = { id: ID, text: "" };
     notesCopy.unshift(newNote);
 
     this.setState({
-      isPreviewDisplayed: false,
       notes: notesCopy,
-      activeNote: 0
+      activeNote: ID,
+      isPreviewDisplayed: false
+    });
+  }
+
+  // Function to handle editing of the active note
+  editNote(e) {
+    let notesCopy = this.state.notes;
+    let ID = this.state.activeNote;
+
+    let index = notesCopy.findIndex((value, index, array) => {
+      return value.id === ID;
     });
 
-    if (window.innerWidth <= 900) {
+    notesCopy[index].text = e.target.value;
+
+    this.setState({
+      notes: notesCopy
+    });
+  }
+
+  // Function to handle deleting the active note
+  deleteNote() {
+    let notesCopy = this.state.notes;
+    let ID = this.state.activeNote;
+
+    if (notesCopy[0].id === ID) {
+      notesCopy.splice(0, 1);
+    }
+
+    this.setState({
+      notes: notesCopy
+    })
+  }
+
+  // Function to handle selecting a note
+  selectNote(e) {
+    /* if (window.innerWidth <= 900) {
       let sidebar = document.querySelector('.layout-sidebar');
 
       sidebar.dataset.active = "is-hidden";
-    }
-
-    document.querySelector('textarea').focus();
-  }
-
-  // Function to handle editing of the current note
-  handleNoteEdit(e) {
-    let notesCopy = this.state.notes;
-    let index = this.state.activeNote;
-
-    let newText = e.target.value;
-
-    notesCopy[index].text = newText;
-
-    // Move recently edited note to the top
-    notesCopy.splice(0, 0, notesCopy.splice(index, 1)[0]);
+    } */
+    let ID = e.currentTarget.id;
 
     this.setState({
-      notes: notesCopy,
-      activeNote: 0
-    });
-  }
-
-  // Function to delete a note
-  deleteNote() {
-    let notesCopy = this.state.notes;
-    let index = this.state.activeNote;
-
-    notesCopy.splice(index, 1);
-
-    this.setState({
-      notes: notesCopy,
-      activeNote: 0
+      activeNote: ID,
+      isPreviewDisplayed: false
     })
 
-    if (window.innerWidth <= 900) {
-      let sidebar = document.querySelector('.layout-sidebar');
-
-      sidebar.dataset.active = "is-active";
-    }
+    /* setTimeout(() => {
+      document.querySelector('textarea').focus();
+    }, 300);*/
   }
 
   // Function to toggle the markdown preview
@@ -115,43 +116,12 @@ class App extends Component {
     })
   }
 
-  // Function to display the currently selected note
-  selectNote(e) {
-    if (window.innerWidth <= 900) {
-      let sidebar = document.querySelector('.layout-sidebar');
-
-      sidebar.dataset.active = "is-hidden";
-    }
-
-    for (let i = 0; i < this.state.notes.length; i++) {
-      if (this.state.notes[i].id === parseInt(e.currentTarget.id)) {
-        this.setState({ activeNote: i })
-      }
-    }
-
-    this.setState({
-      isPreviewDisplayed: false
-    })
-
-    setTimeout(() => {
-      document.querySelector('textarea').focus();
-    }, 300);
-  }
-
   // Function to retrieve stored notes in localStorage
   getStoredNotes() {
-    let nextID = this.state.nextID;
     let storedNotes = JSON.parse(localStorage.storedNotes);
 
-    storedNotes.forEach(note => {
-      if (note.id > nextID) {
-        nextID = (note.id + 1);
-      }
-    })
-
     this.setState({
-      notes: JSON.parse(localStorage.storedNotes),
-      nextID: nextID
+      notes: storedNotes
     })
   }
 
@@ -217,9 +187,9 @@ class App extends Component {
 
   render() {
     const { notes, activeNote, isMenuDisplayed, isPreviewDisplayed, settings } = this.state;
-    const { togglePreview, toggleMenu, createNewNote, handleNoteEdit, deleteNote, selectNote, changeTheme, changeFont } = this;
+    const { createNote, editNote, deleteNote, selectNote, togglePreview, toggleMenu, changeTheme, changeFont } = this;
 
-    // Save notes and settings to localStorage before unloading
+    /*// Save notes and settings to localStorage before unloading
     window.addEventListener("beforeunload", () => {
       localStorage.setItem("storedNotes", JSON.stringify(notes));
       localStorage.setItem("storedSettings", JSON.stringify(settings));
@@ -229,7 +199,7 @@ class App extends Component {
     window.addEventListener("unload", () => {
       localStorage.setItem("storedNotes", JSON.stringify(notes));
       localStorage.setItem("storedSettings", JSON.stringify(settings));
-    });
+    });*/
 
     let content;
     let textContent = (notes.length > 0) ? notes[0].text : "";
@@ -237,7 +207,7 @@ class App extends Component {
     if (isPreviewDisplayed) {
       content = <Preview textContent={textContent} />;
     } else {
-      content = <Editor textContent={textContent} notes={notes} onChange={handleNoteEdit} />;
+      content = <Editor textContent={textContent} notes={notes} onChange={editNote} />;
     }
 
     return (
@@ -245,8 +215,10 @@ class App extends Component {
         <Menu isMenuDisplayed={isMenuDisplayed} theme={settings.theme} font={settings.font} changeTheme={changeTheme} changeFont={changeFont} />
         <div className="layout-overlay" data-display={isMenuDisplayed ? "is-active" : "is-hidden"} onClick={toggleMenu}></div>
         <div className="layout-container">
-          <Sidebar notes={notes} toggleMenu={toggleMenu} activeNote={activeNote} selectNote={selectNote} newNote={createNewNote} />
+          <Sidebar notes={notes} toggleMenu={toggleMenu} activeNote={activeNote} selectNote={selectNote} newNote={createNote} />
+
           <Header togglePreview={togglePreview} deleteNote={deleteNote} isPreviewDisplayed={isPreviewDisplayed} />
+
           {content}
         </div>
       </div>
