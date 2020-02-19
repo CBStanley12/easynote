@@ -24,12 +24,18 @@ const Header = ({ togglePreview, deleteNote, isPreviewDisplayed }) => {
 }
 
 function toggleSidebar() {
-    let sidebar = document.querySelector('.sidebar');
+    const SIDEBAR = document.querySelector(".layout-sidebar");
+    const CONTENT = document.querySelector(".layout-content");
+    const HEADER = document.querySelector(".layout-header");
 
-    if (sidebar.dataset.active === "is-active") {
-        sidebar.dataset.active = "is-hidden";
+    if (SIDEBAR.dataset.display === "is-active") {
+        SIDEBAR.dataset.display = "is-hidden";
+        CONTENT.dataset.display = "is-fullscreen";
+        HEADER.dataset.display = "is-fullscreen";
     } else {
-        sidebar.dataset.active = "is-active";
+        SIDEBAR.dataset.display = "is-active";
+        CONTENT.dataset.display = "";
+        HEADER.dataset.display = "";
     }
 }
 
