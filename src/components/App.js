@@ -57,12 +57,16 @@ class App extends Component {
   editNote(e) {
     let notesCopy = this.state.notes;
     let ID = this.state.activeNote;
-
+    let newText = e.target.value;
     let index = notesCopy.findIndex((value, index, array) => {
       return value.id === ID;
     });
 
-    notesCopy[index].text = e.target.value;
+    notesCopy.unshift(notesCopy.splice(index, 1)[0]);
+
+    if (notesCopy[0].id === ID) {
+      notesCopy[0].text = newText;
+    }
 
     this.setState({
       notes: notesCopy
@@ -73,13 +77,16 @@ class App extends Component {
   deleteNote() {
     let notesCopy = this.state.notes;
     let ID = this.state.activeNote;
+    let index = notesCopy.findIndex((value, index, array) => {
+      return value.id === ID;
+    });
 
-    if (notesCopy[0].id === ID) {
-      notesCopy.splice(0, 1);
-    }
+    notesCopy.splice(index, 1);
+    ID = notesCopy[0].id;
 
     this.setState({
-      notes: notesCopy
+      notes: notesCopy,
+      activeNote: ID
     })
   }
 
@@ -118,15 +125,15 @@ class App extends Component {
 
   // Function to retrieve stored notes in localStorage
   getStoredNotes() {
-    let storedNotes = JSON.parse(localStorage.storedNotes);
+    /*let storedNotes = JSON.parse(localStorage.storedNotes);
 
     this.setState({
       notes: storedNotes
-    })
+    })*/
   }
 
   componentDidMount() {
-    if (localStorage.storedNotes) { this.getStoredNotes(); }
+    /*if (localStorage.storedNotes) { this.getStoredNotes(); }
     if (localStorage.storedSettings) { this.getStoredSettings(); }
 
     if (window.innerWidth <= 900) {
@@ -143,12 +150,12 @@ class App extends Component {
       } else {
         THEME_ELEM.dataset.theme = "light";
       }
-    }
+    }*/
   }
 
   // Function to change the current theme
   changeTheme(e) {
-    let settingsCopy = this.state.settings;
+    /*let settingsCopy = this.state.settings;
     settingsCopy.theme = e.target.value;
 
     const DARK_PREFERENCE = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -164,23 +171,23 @@ class App extends Component {
 
     this.setState({
       settings: settingsCopy
-    })
+    })*/
   }
 
   // Function to change the current font
   changeFont(e) {
-    let settingsCopy = this.state.settings;
+    /*let settingsCopy = this.state.settings;
     settingsCopy.font = e.target.value;
 
     this.setState({
       settings: settingsCopy
-    })
+    })*/
   }
 
   // Function to retrieve stored settings from localStorage
   getStoredSettings() {
-    let storedSettings = JSON.parse(localStorage.storedSettings);
-    this.setState({ settings: storedSettings })
+    /*let storedSettings = JSON.parse(localStorage.storedSettings);
+    this.setState({ settings: storedSettings })*/
   }
 
   // Function to save notes and settings to localStorage
@@ -200,14 +207,15 @@ class App extends Component {
       localStorage.setItem("storedNotes", JSON.stringify(notes));
       localStorage.setItem("storedSettings", JSON.stringify(settings));
     });*/
-
     let content;
-    let textContent = (notes.length > 0) ? notes[0].text : "";
+    let index = notes.findIndex((value, index, array) => {
+      return value.id === activeNote;
+    });
 
     if (isPreviewDisplayed) {
-      content = <Preview textContent={textContent} />;
+      content = <Preview textContent={notes.length > 0 ? notes[index].text : ""} />;
     } else {
-      content = <Editor textContent={textContent} notes={notes} onChange={editNote} />;
+      content = <Editor textContent={notes.length > 0 ? notes[index].text : ""} notes={notes} onChange={editNote} />;
     }
 
     return (

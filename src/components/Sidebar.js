@@ -30,18 +30,18 @@ const Sidebar = ({ notes, activeNote, toggleMenu, selectNote, newNote }) => {
 
 const Note = ({ id, text, active, click }) => {
     const REGEX = /#{1,}|\*{1,}/gm;
-    let altText = text.replace(REGEX, '');
+    let altText = text ? text.replace(REGEX, "") : "";
 
     const [title, setTitle] = useState("");
     useEffect(() => {
-        let newTitle = text ? altText.split('\n', 1)[0] : "New Note...";
+        let newTitle = altText ? altText.split('\n', 1)[0] : "New Note...";
 
         return setTitle(newTitle);
     });
 
     const [preview, setPreview] = useState("");
     useEffect(() => {
-        let newPreview = text ? altText.substring((title.length + 1)) : "";
+        let newPreview = altText ? altText.substring((title.length + 1)) : "";
 
         return setPreview(newPreview);
     });
