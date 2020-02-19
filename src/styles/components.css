@@ -250,6 +250,7 @@
     color: var(--gray);
     padding: 0.4rem 0;
     margin-bottom: 0.7rem;
+    margin-top: 0;
 }
 
 .settings_option {
@@ -262,9 +263,10 @@
 
 .settings_option-radio {
     position: absolute;
-    right: 0;
-    height: 1.1rem;
-    width: 1.1rem;
+    right: 0.1rem;
+    top: 0.8rem;
+    height: 1.2rem;
+    width: 1.2rem;
     background-color: white;
     border: 1px solid var(--color-accent);
     border-radius: 50%;
