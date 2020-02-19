@@ -32,9 +32,12 @@ class App extends Component {
 
     this.togglePreview = this.togglePreview.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
-    this.getStoredNotes = this.getStoredNotes.bind(this);
     this.changeTheme = this.changeTheme.bind(this);
     this.changeFont = this.changeFont.bind(this);
+
+    this.saveNotesToStorage = this.saveNotesToStorage.bind(this);
+    this.getStoredNotes = this.getStoredNotes.bind(this);
+    this.saveSettingsToStorage = this.saveSettingsToStorage.bind(this);
     this.getStoredSettings = this.getStoredSettings.bind(this);
   }
 
@@ -51,6 +54,8 @@ class App extends Component {
       activeNote: ID,
       isPreviewDisplayed: false
     });
+
+    this.saveNotesToStorage();
   }
 
   // Function to handle editing of the active note
@@ -71,6 +76,8 @@ class App extends Component {
     this.setState({
       notes: notesCopy
     });
+
+    this.saveNotesToStorage();
   }
 
   // Function to handle deleting the active note
@@ -88,6 +95,8 @@ class App extends Component {
       notes: notesCopy,
       activeNote: ID
     })
+
+    this.saveNotesToStorage();
   }
 
   // Function to handle selecting a note
@@ -123,20 +132,74 @@ class App extends Component {
     })
   }
 
-  // Function to retrieve stored notes in localStorage
-  getStoredNotes() {
-    /*let storedNotes = JSON.parse(localStorage.storedNotes);
+  // Function to change the current theme
+  changeTheme(e) {
+    let settingsCopy = this.state.settings;
+    settingsCopy.theme = e.target.value;
+
+    const DARK_PREFERENCE = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const THEME_ELEM = document.querySelector("#theme");
+
+    if (settingsCopy.theme === "system") {
+      if (window.matchMedia && DARK_PREFERENCE) {
+        THEME_ELEM.dataset.theme = "dark";
+      } else {
+        THEME_ELEM.dataset.theme = "light";
+      }
+    }
 
     this.setState({
-      notes: storedNotes
-    })*/
+      settings: settingsCopy
+    })
+
+    this.saveSettingsToStorage();
+  }
+
+  // Function to change the current font
+  changeFont(e) {
+    let settingsCopy = this.state.settings;
+    settingsCopy.font = e.target.value;
+
+    this.setState({
+      settings: settingsCopy
+    })
+
+    this.saveSettingsToStorage();
+  }
+
+  // Save notes to localStorage
+  saveNotesToStorage() {
+    localStorage.setItem("storedNotes", JSON.stringify(this.state.notes));
+  }
+
+  // Retrieve stored notes from localStorage
+  getStoredNotes() {
+    let storedNotes = JSON.parse(localStorage.storedNotes);
+    let ID = storedNotes[0].id;
+
+    this.setState({
+      notes: storedNotes,
+      activeNote: ID
+    })
+  }
+
+  // Save settings to localStorage
+  saveSettingsToStorage() {
+    localStorage.setItem("storedSettings", JSON.stringify(this.state.settings));
+  }
+
+  // Retrieve stored settings from localStorage
+  getStoredSettings() {
+    let storedSettings = JSON.parse(localStorage.storedSettings);
+
+    this.setState({ settings: storedSettings })
   }
 
   componentDidMount() {
-    /*if (localStorage.storedNotes) { this.getStoredNotes(); }
+    if (localStorage.storedNotes) { this.getStoredNotes(); }
     if (localStorage.storedSettings) { this.getStoredSettings(); }
 
-    if (window.innerWidth <= 900) {
+    /*if (window.innerWidth <= 900) {
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
@@ -153,60 +216,10 @@ class App extends Component {
     }*/
   }
 
-  // Function to change the current theme
-  changeTheme(e) {
-    /*let settingsCopy = this.state.settings;
-    settingsCopy.theme = e.target.value;
-
-    const DARK_PREFERENCE = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const THEME_ELEM = document.querySelector("#theme");
-
-    if (settingsCopy.theme === "system") {
-      if (window.matchMedia && DARK_PREFERENCE) {
-        THEME_ELEM.dataset.theme = "dark";
-      } else {
-        THEME_ELEM.dataset.theme = "light";
-      }
-    }
-
-    this.setState({
-      settings: settingsCopy
-    })*/
-  }
-
-  // Function to change the current font
-  changeFont(e) {
-    /*let settingsCopy = this.state.settings;
-    settingsCopy.font = e.target.value;
-
-    this.setState({
-      settings: settingsCopy
-    })*/
-  }
-
-  // Function to retrieve stored settings from localStorage
-  getStoredSettings() {
-    /*let storedSettings = JSON.parse(localStorage.storedSettings);
-    this.setState({ settings: storedSettings })*/
-  }
-
-  // Function to save notes and settings to localStorage
-
   render() {
     const { notes, activeNote, isMenuDisplayed, isPreviewDisplayed, settings } = this.state;
     const { createNote, editNote, deleteNote, selectNote, togglePreview, toggleMenu, changeTheme, changeFont } = this;
 
-    /*// Save notes and settings to localStorage before unloading
-    window.addEventListener("beforeunload", () => {
-      localStorage.setItem("storedNotes", JSON.stringify(notes));
-      localStorage.setItem("storedSettings", JSON.stringify(settings));
-    });
-
-    // Unload event for mobile (iOS) browsers
-    window.addEventListener("unload", () => {
-      localStorage.setItem("storedNotes", JSON.stringify(notes));
-      localStorage.setItem("storedSettings", JSON.stringify(settings));
-    });*/
     let content;
     let index = notes.findIndex((value, index, array) => {
       return value.id === activeNote;
