@@ -25,17 +25,11 @@ const Header = ({ togglePreview, deleteNote, isPreviewDisplayed }) => {
 
 function toggleSidebar() {
     const SIDEBAR = document.querySelector(".layout-sidebar");
-    const CONTENT = document.querySelector(".layout-content");
-    const HEADER = document.querySelector(".layout-header");
 
     if (SIDEBAR.dataset.display === "is-active") {
         SIDEBAR.dataset.display = "is-hidden";
-        CONTENT.dataset.display = "is-fullscreen";
-        HEADER.dataset.display = "is-fullscreen";
     } else {
         SIDEBAR.dataset.display = "is-active";
-        CONTENT.dataset.display = "";
-        HEADER.dataset.display = "";
     }
 }
 

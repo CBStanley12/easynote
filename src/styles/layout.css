@@ -43,7 +43,6 @@
 /* LAYOUT - Content Section */
 .layout-content {
     background-color: var(--color-bg--alt);
-    grid-area: content;
     height: 100%;
     overflow: hidden;
     position: relative;
@@ -52,7 +51,6 @@
 /* LAYOUT - Header Section */
 .layout-header {
     border-bottom: 1px solid var(--color-accent);
-    grid-area: header;
     padding: 0 1rem;
 }
 
@@ -98,14 +96,22 @@
 
 /* STATE - Hide Sidebar */
 
+.layout-sidebar[data-display="is-active"] ~ .layout-header {
+    grid-area: header;
+}
+
+.layout-sidebar[data-display="is-active"] ~ .layout-content {
+    grid-area: content;
+}
+
 /* Hide the sidebar section */
 .layout-sidebar[data-display="is-hidden"] {
     display: none;
 }
 
 /* Make the content and header sections fullscreen */
-.layout-content[data-display="is-fullscreen"],
-.layout-header[data-display="is-fullscreen"] {
+.layout-sidebar[data-display="is-hidden"] ~ .layout-header,
+.layout-sidebar[data-display="is-hidden"] ~ .layout-content {
     grid-column: span 2;
 }
 
@@ -136,26 +142,15 @@
 @media only screen and (max-width: 900px) {
     .layout-sidebar {
         border: none;
-        display: none;
+        grid-column: span 2;
     }
 
     .layout-content {
         height: 100%;
     }
 
-    .layout-sidebar[data-active="is-active"] {
-        display: block;
-        grid-column: span 2;
-        width: 100vw;
-    }
-
-    .layout-header,
-    .layout-sidebar[data-active="is-hidden"] ~ .layout-container {
-        grid-column: span 2;
-    }
-
-    .layout-sidebar[data-active="is-active"] ~ .layout-header,
-    .layout-sidebar[data-active="is-active"] ~ .layout-content {
+    .layout-sidebar[data-display="is-active"] ~ .layout-header,
+    .layout-sidebar[data-display="is-active"] ~ .layout-content {
         display: none;
     }
 }

@@ -263,8 +263,8 @@
 
 .settings_option-radio {
     position: absolute;
-    right: 0.1rem;
-    top: 0.8rem;
+    right: 0.08rem;
+    top: 0.7rem;
     height: 1.2rem;
     width: 1.2rem;
     background-color: white;
@@ -375,6 +375,6 @@
     /* Sidebar Component */
     .note[data-state="is-active"] {
         background-color: transparent;
-        border-bottom: 1px solid var(--accent-gray);
+        border-bottom: 1px solid var(--color-accent);
     }
 }

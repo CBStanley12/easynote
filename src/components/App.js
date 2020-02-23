@@ -97,15 +97,20 @@ class App extends Component {
     })
 
     this.saveNotesToStorage();
+
+    if (window.innerWidth <= 900) {
+      let sidebar = document.querySelector('.layout-sidebar');
+      sidebar.dataset.display = "is-active";
+    }
   }
 
   // Function to handle selecting a note
   selectNote(e) {
-    /* if (window.innerWidth <= 900) {
+    if (window.innerWidth <= 900) {
       let sidebar = document.querySelector('.layout-sidebar');
+      sidebar.dataset.display = "is-hidden";
+    }
 
-      sidebar.dataset.active = "is-hidden";
-    } */
     let ID = e.currentTarget.id;
 
     this.setState({
@@ -199,12 +204,15 @@ class App extends Component {
     if (localStorage.storedNotes) { this.getStoredNotes(); }
     if (localStorage.storedSettings) { this.getStoredSettings(); }
 
-    /*if (window.innerWidth <= 900) {
+    if (window.innerWidth <= 900) {
+      const sidebar = document.querySelector('.layout-sidebar');
+      sidebar.dataset.display = "is-active";
+
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
 
-    if (this.state.settings.theme === "system") {
+    /*if (this.state.settings.theme === "system") {
       const DARK_PREFERENCE = window.matchMedia("(prefers-color-scheme: dark)").matches;
       const THEME_ELEM = document.querySelector("#theme");
 
