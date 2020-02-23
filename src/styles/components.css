@@ -356,18 +356,7 @@
 
 
     /* Menu Component */
-    .menu { grid-template: 1fr 9rem 3rem / 1fr; }
-
-    .settings { margin-top: 0.5rem; }
-
-    .settings_option { padding: 0.5rem 0.4rem; }
-
-    .settings_option-radio {
-        top: 0.6rem;
-        right: 0.5rem;
-    }
-
-    .menu_section-link { font-size: 1rem; }
+    .menu_section-link { font-size: 0.9rem; }
 
     .menu_section-copyright { font-size: 0.8rem; }
 

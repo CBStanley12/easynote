@@ -59,6 +59,7 @@
     background-color: var(--color-bg--alt);
     border-right: 1px solid var(--color-accent);
     bottom: 0;
+    height: 100%;
     left: 0;
     overflow-y: auto;
     position: fixed;
