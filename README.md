@@ -61,4 +61,4 @@ Design inspired by [Simplenote](https://simplenote.com/)
 ## License
 ![GitHub License](https://img.shields.io/github/license/CBStanley12/markdown-previewer)
 
-This project is licensed under the MIT License - see the LICENSE file for details
+This project is licensed under the MIT License- see the [LICENSE](LICENSE) file for details
