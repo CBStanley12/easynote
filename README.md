@@ -1,5 +1,5 @@
-<h1 align="center">EasyNote</h1>
-<p align="center">A note-taking app that allows users to view notes in markdown</p>
+<h1 align="center">Easynote</h1>
+<p align="center">A note-taking app for crafting focused notes</p>
 
 <div align="center">
     <img src="https://api.netlify.com/api/v1/badges/0d3c7f3d-3a0f-4afc-a0b1-88310f75e4c5/deploy-status">
