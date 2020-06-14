@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&family=Roboto+Slab&display=swap");
+
+/* || Base Styles || */
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  margin: 0;
+  overflow: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+textarea {
+  border: none;
+  font-size: inherit;
+  resize: none;
+  outline: none;
+}
+
+textarea:disabled {
+  background-color: transparent;
+}
+
+/* || Variables || */
+:root {
+  --color-primary: #6c5ce7;
+  --color-secondary: #a0a0a0;
+  --color-background: #fbfbfb;
+  --color-border: #dedede;
+  --color-text: #333333;
+  --color-select-bg: #fff;
+  --color-select-bg--unfocused: #ededed;
+  --color-select-border--unfocused: #999;
+
+  --font-serif: "Roboto Slab", serif;
+  --font-sans: "Roboto", sans-serif;
+  --font-mono: "Roboto Mono", monospace;
+}
+
+[data-theme="dark"] {
+  --color-secondary: #5b5b5b;
+  --color-background: #2c2c2e;
+  --color-border: #383b3d;
+  --color-text: #333333;
+  --color-select-bg: #18181a;
+  --color-select-bg--unfocused: #27282b;
+  --color-select-border--unfocused: #515151;
+}
+
+[data-font="serif"] {
+  --font-content: var(--font-serif);
+}
+
+[data-font="sans"] {
+  --font-content: var(--font-sans);
+}
+
+[data-font="mono"] {
+  --font-content: var(--font-mono);
+}
+
+/* || Layout || */
+.layout-container {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  display: grid;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar content";
+  grid-template-columns: 350px 1fr;
+  grid-template-rows: 3.5rem 1fr;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
+}
+
+/* || Component File Imports || */
+@import "../Button/Button.css";
+@import "../Content/Content.css";
+@import "../Header/Header.css";
+@import "../Menu/Menu.css";
+@import "../Sidebar/Sidebar.css";

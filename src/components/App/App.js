@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import '../styles/app.css';
-import Editor from './Editor';
-import Header from './Header';
-import Menu from './Menu';
-import Preview from './Preview';
-import Sidebar from './Sidebar';
+import React, { Component } from "react";
+import "./App.css";
+import Editor from "../Content/Editor";
+import Header from "../Header/Header";
+import Menu from "../Menu/Menu";
+import Preview from "../Content/Preview";
+import Sidebar from "../Sidebar/Sidebar";
 
 class App extends Component {
   constructor(props) {
@@ -13,17 +13,17 @@ class App extends Component {
       notes: [
         {
           id: "_jig5f12qvx",
-          text: placeholder
-        }
+          text: placeholder,
+        },
       ],
       activeNote: "_jig5f12qvx",
       isPreviewDisplayed: false,
       isMenuDisplayed: false,
       settings: {
         theme: "system",
-        font: "serif"
-      }
-    }
+        font: "serif",
+      },
+    };
 
     this.createNote = this.createNote.bind(this);
     this.editNote = this.editNote.bind(this);
@@ -44,7 +44,11 @@ class App extends Component {
   // Function to handle creating a new note
   createNote() {
     let notesCopy = this.state.notes;
-    let ID = "_" + Math.random().toString(36).substring(2, 12);
+    let ID =
+      "_" +
+      Math.random()
+        .toString(36)
+        .substring(2, 12);
 
     let newNote = { id: ID, text: "" };
     notesCopy.unshift(newNote);
@@ -52,7 +56,7 @@ class App extends Component {
     this.setState({
       notes: notesCopy,
       activeNote: ID,
-      isPreviewDisplayed: false
+      isPreviewDisplayed: false,
     });
 
     this.saveNotesToStorage();
@@ -74,7 +78,7 @@ class App extends Component {
     }
 
     this.setState({
-      notes: notesCopy
+      notes: notesCopy,
     });
 
     this.saveNotesToStorage();
@@ -93,13 +97,13 @@ class App extends Component {
 
     this.setState({
       notes: notesCopy,
-      activeNote: ID
-    })
+      activeNote: ID,
+    });
 
     this.saveNotesToStorage();
 
     if (window.innerWidth <= 900) {
-      let sidebar = document.querySelector('.layout-sidebar');
+      let sidebar = document.querySelector(".layout-sidebar");
       sidebar.dataset.display = "is-active";
     }
   }
@@ -107,7 +111,7 @@ class App extends Component {
   // Function to handle selecting a note
   selectNote(e) {
     if (window.innerWidth <= 900) {
-      let sidebar = document.querySelector('.layout-sidebar');
+      let sidebar = document.querySelector(".layout-sidebar");
       sidebar.dataset.display = "is-hidden";
     }
 
@@ -115,8 +119,8 @@ class App extends Component {
 
     this.setState({
       activeNote: ID,
-      isPreviewDisplayed: false
-    })
+      isPreviewDisplayed: false,
+    });
 
     /* setTimeout(() => {
       document.querySelector('textarea').focus();
@@ -126,15 +130,15 @@ class App extends Component {
   // Function to toggle the markdown preview
   togglePreview() {
     this.setState({
-      isPreviewDisplayed: !this.state.isPreviewDisplayed
-    })
+      isPreviewDisplayed: !this.state.isPreviewDisplayed,
+    });
   }
 
   // Function to toggle the menu
   toggleMenu() {
     this.setState({
-      isMenuDisplayed: !this.state.isMenuDisplayed
-    })
+      isMenuDisplayed: !this.state.isMenuDisplayed,
+    });
   }
 
   // Function to change the current theme
@@ -142,7 +146,8 @@ class App extends Component {
     let settingsCopy = this.state.settings;
     settingsCopy.theme = e.target.value;
 
-    const DARK_PREFERENCE = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const DARK_PREFERENCE = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches;
     const THEME_ELEM = document.querySelector("#theme");
 
     if (settingsCopy.theme === "system") {
@@ -154,8 +159,8 @@ class App extends Component {
     }
 
     this.setState({
-      settings: settingsCopy
-    })
+      settings: settingsCopy,
+    });
 
     this.saveSettingsToStorage();
   }
@@ -166,8 +171,8 @@ class App extends Component {
     settingsCopy.font = e.target.value;
 
     this.setState({
-      settings: settingsCopy
-    })
+      settings: settingsCopy,
+    });
 
     this.saveSettingsToStorage();
   }
@@ -184,8 +189,8 @@ class App extends Component {
 
     this.setState({
       notes: storedNotes,
-      activeNote: ID
-    })
+      activeNote: ID,
+    });
   }
 
   // Save settings to localStorage
@@ -197,19 +202,23 @@ class App extends Component {
   getStoredSettings() {
     let storedSettings = JSON.parse(localStorage.storedSettings);
 
-    this.setState({ settings: storedSettings })
+    this.setState({ settings: storedSettings });
   }
 
   componentDidMount() {
-    if (localStorage.storedNotes) { this.getStoredNotes(); }
-    if (localStorage.storedSettings) { this.getStoredSettings(); }
+    if (localStorage.storedNotes) {
+      this.getStoredNotes();
+    }
+    if (localStorage.storedSettings) {
+      this.getStoredSettings();
+    }
 
     if (window.innerWidth <= 900) {
-      const sidebar = document.querySelector('.layout-sidebar');
+      const sidebar = document.querySelector(".layout-sidebar");
       sidebar.dataset.display = "is-active";
 
       let vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
     }
 
     /*if (this.state.settings.theme === "system") {
@@ -225,8 +234,23 @@ class App extends Component {
   }
 
   render() {
-    const { notes, activeNote, isMenuDisplayed, isPreviewDisplayed, settings } = this.state;
-    const { createNote, editNote, deleteNote, selectNote, togglePreview, toggleMenu, changeTheme, changeFont } = this;
+    const {
+      notes,
+      activeNote,
+      isMenuDisplayed,
+      isPreviewDisplayed,
+      settings,
+    } = this.state;
+    const {
+      createNote,
+      editNote,
+      deleteNote,
+      selectNote,
+      togglePreview,
+      toggleMenu,
+      changeTheme,
+      changeFont,
+    } = this;
 
     let content;
     let index = notes.findIndex((value, index, array) => {
@@ -234,19 +258,47 @@ class App extends Component {
     });
 
     if (isPreviewDisplayed) {
-      content = <Preview textContent={notes.length > 0 ? notes[index].text : ""} />;
+      content = (
+        <Preview textContent={notes.length > 0 ? notes[index].text : ""} />
+      );
     } else {
-      content = <Editor textContent={notes.length > 0 ? notes[index].text : ""} notes={notes} onChange={editNote} />;
+      content = (
+        <Editor
+          textContent={notes.length > 0 ? notes[index].text : ""}
+          notes={notes}
+          onChange={editNote}
+        />
+      );
     }
 
     return (
       <div id="theme" data-theme={settings.theme} data-font={settings.font}>
-        <Menu isMenuDisplayed={isMenuDisplayed} theme={settings.theme} font={settings.font} changeTheme={changeTheme} changeFont={changeFont} />
-        <div className="layout-overlay" data-display={isMenuDisplayed ? "is-active" : "is-hidden"} onClick={toggleMenu}></div>
+        <Menu
+          isMenuDisplayed={isMenuDisplayed}
+          theme={settings.theme}
+          font={settings.font}
+          changeTheme={changeTheme}
+          changeFont={changeFont}
+        />
+        <div
+          className="layout-overlay"
+          data-display={isMenuDisplayed ? "is-active" : "is-hidden"}
+          onClick={toggleMenu}
+        ></div>
         <div className="layout-container">
-          <Sidebar notes={notes} toggleMenu={toggleMenu} activeNote={activeNote} selectNote={selectNote} newNote={createNote} />
+          <Sidebar
+            notes={notes}
+            toggleMenu={toggleMenu}
+            activeNote={activeNote}
+            selectNote={selectNote}
+            newNote={createNote}
+          />
 
-          <Header togglePreview={togglePreview} deleteNote={deleteNote} isPreviewDisplayed={isPreviewDisplayed} />
+          <Header
+            togglePreview={togglePreview}
+            deleteNote={deleteNote}
+            isPreviewDisplayed={isPreviewDisplayed}
+          />
 
           {content}
         </div>
@@ -255,8 +307,7 @@ class App extends Component {
   }
 }
 
-const placeholder =
-  `# Welcome to my React Markdown Previewer!
+const placeholder = `# Welcome to my React Markdown Previewer!
 ## Start typing to preview your markdown text!
 
 ## This is a sub-heading...

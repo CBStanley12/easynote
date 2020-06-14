@@ -1,0 +1,39 @@
+/* Main Component */
+.btn {
+  cursor: pointer;
+  position: relative;
+}
+
+/* Icon Button */
+.btn-icon {
+  color: var(--color-primary);
+}
+
+/* Tooltip */
+.btn-icon[aria-label]:after {
+  background: gray;
+  border-radius: 5px;
+  color: white;
+  content: attr(aria-label);
+  opacity: 0;
+  padding: 4px 8px;
+  pointer-events: none;
+  position: absolute;
+  top: 120%;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+  z-index: 20;
+}
+
+.btn-icon[aria-label]:hover:after {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.btn--left[aria-label]:after {
+  left: 0;
+}
+
+.btn--right[aria-label]:after {
+  right: 0;
+}
