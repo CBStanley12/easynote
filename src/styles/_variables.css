@@ -1,0 +1,29 @@
+:root {
+	--purple: #6C5CE7;
+
+	--white-0: #FFFFFF;
+	--white-1: #FBFBFB;
+	--white-2: #EDEDED;
+	
+	--gray-0: #DEDEDE;
+	--gray-1: #A0A0A0;
+	--gray-2: #999999;
+	--gray-3: #636366;
+	--gray-4: #333333;
+
+	--clr-primary: var(--purple);
+}
+
+[data-theme="light"] {
+	--clr-background: var(--white-1);
+	--clr-border: var(--gray-0);
+	--clr-accent: var(--gray-1);
+
+	--clr-text--primary: var(--gray-4);
+	--clr-text--secondary: var(--gray-3);
+
+	--clr-note-bg--hover: var(--white-0);
+	--clr-note-border--hover: var(--clr-primary);
+	--clr-note-bg--active: var(--white-2);
+	--clr-note-border--active: var(--gray-2);
+}

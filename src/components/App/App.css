@@ -36,7 +36,7 @@ textarea:disabled {
 }
 
 /* || Variables || */
-:root {
+/*:root {
   --color-primary: #6c5ce7;
   --color-secondary: #a0a0a0;
   --color-background: #fbfbfb;
@@ -59,7 +59,7 @@ textarea:disabled {
   --color-select-bg: #18181a;
   --color-select-bg--unfocused: #27282b;
   --color-select-border--unfocused: #515151;
-}
+}*/
 
 [data-font="serif"] {
   --font-content: var(--font-serif);
@@ -75,7 +75,7 @@ textarea:disabled {
 
 /* || Layout || */
 .layout-container {
-  background-color: var(--color-bg);
+  background-color: #FBFBFB;
   color: var(--color-text);
   display: grid;
   grid-template-areas:
@@ -89,8 +89,7 @@ textarea:disabled {
 }
 
 /* || Component File Imports || */
-@import "../Button/Button.css";
+@import "../Button/styles.css";
 @import "../Content/Content.css";
 @import "../Header/Header.css";
 @import "../Menu/Menu.css";
-@import "../Sidebar/Sidebar.css";
