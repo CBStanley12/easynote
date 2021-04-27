@@ -1,12 +1,21 @@
+@import '../../styles/_variables.css';
+
 /* Main Component */
 .btn {
   cursor: pointer;
+  display: grid;
+  outline: none;
+  place-items: center;
   position: relative;
 }
 
 /* Icon Button */
-.btn-icon {
-  color: var(--color-primary);
+.btn-icon svg {
+	fill: var(--clr-accent);
+}
+
+.btn-icon:focus svg {
+	fill: var(--clr-primary);
 }
 
 /* Tooltip */
