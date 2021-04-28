@@ -4,7 +4,7 @@ import Editor from "../Content/Editor";
 import Header from "../Header/Header";
 import Menu from "../Menu/Menu";
 import Preview from "../Content/Preview";
-import Sidebar from "../Sidebar/Sidebar";
+import Sidebar from "../Sidebar";
 
 class App extends Component {
   constructor(props) {
