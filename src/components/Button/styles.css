@@ -10,7 +10,7 @@
 }
 
 /* Icon Button */
-.btn-icon svg {
+.btn-icon svg path {
 	fill: var(--clr-accent);
 }
 
