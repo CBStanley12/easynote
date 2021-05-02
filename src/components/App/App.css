@@ -89,7 +89,5 @@ textarea:disabled {
 }
 
 /* || Component File Imports || */
-@import "../Button/styles.css";
 @import "../Content/Content.css";
-@import "../Header/Header.css";
 @import "../Menu/Menu.css";

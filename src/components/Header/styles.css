@@ -1,0 +1,24 @@
+@import '../../styles/_variables.css';
+
+.l-header {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+/* Main Component */
+.header {
+	border-bottom: 1px solid var(--clr-border);
+	height: 50px;
+	padding: 12px 20px;
+}
+
+.header_icons {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+.header_icons > .btn:first-child {
+	margin-right: 20px;
+}
