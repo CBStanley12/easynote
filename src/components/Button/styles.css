@@ -14,7 +14,7 @@
 	fill: var(--clr-accent);
 }
 
-.btn-icon:focus svg {
+.btn-icon:focus svg path {
 	fill: var(--clr-primary);
 }
 

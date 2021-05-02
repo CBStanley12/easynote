@@ -1,5 +1,5 @@
 import './styles.css';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {ReactComponent as CreateIcon} from '../SVG/create.svg';
 import {ReactComponent as SidebarHideIcon} from '../SVG/sidebar-hide.svg';
 import {ReactComponent as SidebarShowIcon} from '../SVG/sidebar-show.svg';
@@ -16,9 +16,9 @@ const ICONS = {
 	delete: <DeleteIcon />,
 };
 
-const Button = ({ cls, click, label, icon }) => {
+const Button = ({ cls, click, label, tabIndex, icon }) => {
 	return (
-		<button className={`btn btn-icon ${cls}`} onClick={click} aria-label={label}>
+		<button className={`btn btn-icon ${cls}`} onClick={click} aria-label={label} tabIndex={tabIndex}>
 			{ ICONS[icon] }
 		</button>
 	)
