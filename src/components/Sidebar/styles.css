@@ -2,7 +2,6 @@
 
 /* LAYOUT - Sidebar Section */
 .l-sidebar {
-	display: grid;
 	grid-template: 50px 1fr / 1fr;
 }
 
@@ -10,6 +9,10 @@
 	border-right: 1px solid var(--clr-border);
 	grid-area: sidebar;
 }
+
+.sidebar.active { display: grid; }
+
+.sidebar.hidden { display: none; }
 
 .sidebar_header {
 	border-bottom: 1px solid var(--clr-border);

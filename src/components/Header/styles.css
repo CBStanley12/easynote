@@ -6,10 +6,9 @@
 	justify-content: space-between;
 }
 
-/* Main Component */
 .header {
 	border-bottom: 1px solid var(--clr-border);
-	height: 50px;
+	grid-area: header;
 	padding: 12px 20px;
 }
 
@@ -21,4 +20,8 @@
 
 .header_icons > .btn:first-child {
 	margin-right: 20px;
+}
+
+.sidebar.hidden + .header {
+	grid-area: 1 / 1 / 2 / last-line;
 }

@@ -18,6 +18,7 @@ class App extends Component {
       ],
       activeNote: "_jig5f12qvx",
       isPreviewDisplayed: false,
+	  isSidebarActive: true,
       isMenuActive: false,
       settings: {
         theme: "system",
@@ -31,6 +32,7 @@ class App extends Component {
     this.selectNote = this.selectNote.bind(this);
 
     this.togglePreview = this.togglePreview.bind(this);
+	this.toggleSidebar = this.toggleSidebar.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
     this.changeTheme = this.changeTheme.bind(this);
     this.changeFont = this.changeFont.bind(this);
@@ -131,6 +133,13 @@ class App extends Component {
   togglePreview() {
     this.setState({
       isPreviewDisplayed: !this.state.isPreviewDisplayed,
+    });
+  }
+
+  // Function to toggle the sidebar
+  toggleSidebar() {
+    this.setState({
+      isSidebarActive: !this.state.isSidebarActive
     });
   }
 
@@ -237,6 +246,7 @@ class App extends Component {
     const {
       notes,
       activeNote,
+	  isSidebarActive,
       isMenuActive,
       isPreviewDisplayed,
       settings,
@@ -247,6 +257,7 @@ class App extends Component {
       deleteNote,
       selectNote,
       togglePreview,
+	  toggleSidebar,
       toggleMenu,
       changeTheme,
       changeFont,
@@ -286,9 +297,10 @@ class App extends Component {
           //data-display={isMenuDisplayed ? "is-active" : "is-hidden"}
           onClick={toggleMenu}
         ></div>
-        <div className="layout-container">
+        <div className="l-container">
           <Sidebar
             notes={notes}
+			isActive={isSidebarActive}
             toggleMenu={toggleMenu}
             activeNote={activeNote}
             selectNote={selectNote}
@@ -296,6 +308,8 @@ class App extends Component {
           />
 
           <Header
+		  	isSidebarActive={isSidebarActive}
+		  	toggleSidebar={toggleSidebar}
             togglePreview={togglePreview}
             deleteNote={deleteNote}
             isPreviewDisplayed={isPreviewDisplayed}

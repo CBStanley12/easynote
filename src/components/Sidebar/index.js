@@ -4,7 +4,7 @@ import {ReactComponent as SearchIcon} from '../SVG/search.svg';
 import Button from '../Button';
 import formatNotePreview from '../../hooks/UseFormatNotePreview';
 
-const Sidebar = ({ notes, activeNote, toggleMenu, selectNote, newNote }) => {
+const Sidebar = ({ notes, isActive, activeNote, toggleMenu, selectNote, newNote }) => {
 	function renderNotePreview(note) {
 		let active = (note.id === activeNote),
 			[title, text] = formatNotePreview(note.text);
@@ -19,7 +19,7 @@ const Sidebar = ({ notes, activeNote, toggleMenu, selectNote, newNote }) => {
 	}
 
 	return (
-		<aside className="l-sidebar sidebar" data-theme="light">
+		<aside className={`l-sidebar sidebar ${(isActive) ? 'active' : 'hidden'}`} data-theme="light">
 			<header className="sidebar_header">
 				<Button cls="btn--left" click={toggleMenu} label="Settings" tabIndex="1" icon="menu" />
 				<label className="sidebar_header-search">
