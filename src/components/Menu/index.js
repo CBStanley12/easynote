@@ -18,7 +18,7 @@ const Menu = () => {
 						<option value="roboto-slab">Roboto Slab</option>
 					</optgroup>
 					<optgroup label="Sans-Serif">
-						<option value="roboto">Roboto</option>
+						<option value="roboto" selected>Roboto</option>
 						<option value="open-sans">Open Sans</option>
 					</optgroup>
 					<optgroup label="Monospace">
@@ -31,7 +31,7 @@ const Menu = () => {
 			<div className="menu_section">
 				<label htmlFor="theme">THEME</label>
 				<select id="theme" name="theme">
-					<option value="light">Light</option>
+					<option value="light" selected>Light</option>
 					<option value="dark">Dark</option>
 					<option value="system">System</option>
 				</select>

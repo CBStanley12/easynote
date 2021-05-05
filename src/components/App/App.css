@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&family=Roboto+Slab&display=swap");
+@import "../../styles/_variables.css";
 
 /* || Base Styles || */
 html {
@@ -6,9 +6,10 @@ html {
 }
 
 body {
-  font-size: 16px;
-  margin: 0;
-  overflow: hidden;
+	font-family: var(--font-primary);
+	font-size: 16px;
+	margin: 0;
+	overflow: hidden;
 }
 
 *,
@@ -90,4 +91,3 @@ textarea:disabled {
 
 /* || Component File Imports || */
 @import "../Content/Content.css";
-@import "../Menu/Menu.css";
