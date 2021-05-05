@@ -16,7 +16,7 @@ class App extends Component {
         },
       ],
       activeNote: "_jig5f12qvx",
-      isPreviewDisplayed: false,
+      isMarkdownDisplayed: false,
 	  isSidebarActive: true,
       isMenuActive: false,
       settings: {
@@ -30,7 +30,7 @@ class App extends Component {
     this.deleteNote = this.deleteNote.bind(this);
     this.selectNote = this.selectNote.bind(this);
 
-    this.togglePreview = this.togglePreview.bind(this);
+    this.toggleMarkdown = this.toggleMarkdown.bind(this);
 	this.toggleSidebar = this.toggleSidebar.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
     this.changeTheme = this.changeTheme.bind(this);
@@ -129,9 +129,9 @@ class App extends Component {
   }
 
   // Function to toggle the markdown preview
-  togglePreview() {
+  toggleMarkdown() {
     this.setState({
-      isPreviewDisplayed: !this.state.isPreviewDisplayed,
+      isMarkdownDisplayed: !this.state.isMarkdownDisplayed,
     });
   }
 
@@ -247,7 +247,7 @@ class App extends Component {
       activeNote,
 	  isSidebarActive,
       isMenuActive,
-      isPreviewDisplayed,
+      isMarkdownDisplayed,
       settings,
     } = this.state;
     const {
@@ -257,7 +257,7 @@ class App extends Component {
       selectNote,
 	  toggleSidebar,
       toggleMenu,
-      togglePreview,
+      toggleMarkdown,
       changeTheme,
       changeFont,
     } = this;
@@ -309,13 +309,13 @@ class App extends Component {
           <Header
 		  	isSidebarActive={isSidebarActive}
 		  	toggleSidebar={toggleSidebar}
-            togglePreview={togglePreview}
+            toggleMarkdown={toggleMarkdown}
             deleteNote={deleteNote}
-            isPreviewDisplayed={isPreviewDisplayed}
+            isMarkdownDisplayed={isMarkdownDisplayed}
           />
 
           <Content
-		  	isPreviewDisplayed={isPreviewDisplayed}
+		  	isMarkdownDisplayed={isMarkdownDisplayed}
 			textContent={(notes.length > 0) ? notes[index].text : null}
 			onChange={editNote}
 		  />
