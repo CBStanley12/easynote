@@ -1,0 +1,94 @@
+@import "../../styles/_variables.css";
+
+.menu {
+	background: var(--clr-background);
+	border: 1px solid var(--clr-accent);
+	border-radius: 10px;
+	box-shadow: 0px 20px 40px 5px #A0A0A0;
+	height: 400px;
+	left: 50%;
+	margin-left: -150px;
+	margin-top: -200px;
+	padding: 40px 30px;
+	position: absolute;
+	top: 50%;
+	width: 300px;
+	z-index: 10;
+}
+
+.l-menu,
+.menu_section {
+	align-items: stretch;
+	display: flex;
+	flex-direction: column;
+}
+
+.l-menu {
+	justify-content: space-between;
+}
+
+.menu_section {
+	position: relative;
+}
+
+.menu_section label {
+	color: var(--clr-accent);
+}
+
+.menu_section label,
+.menu_section select,
+.menu_section a {
+	font-size: 0.875rem;
+}
+
+.menu_section label,
+.menu_section a {
+	line-height: 30px;
+}
+
+.menu_section select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	border: 1px solid var(--clr-border);
+	border-radius: 5px;
+	color: var(--clr-text--secondary);
+	font-family: inherit;
+	height: 36px;
+	outline-color: var(--clr-primary);
+	padding: 5px 15px;
+}
+
+.menu_section select + svg {
+	bottom: 10px;
+	pointer-events: none;
+	position: absolute;
+	right: 15px;
+}
+
+.menu_section a {
+	align-items: center;
+	color: var(--clr-text--secondary);
+	display: flex;
+	outline: none;
+	text-decoration: none;
+}
+
+.menu_section a svg {
+	margin-right: 10px;
+}
+
+.menu_section a svg path {
+	fill: var(--clr-text--secondary);
+}
+
+.menu_section a:hover,
+.menu_section a:focus {
+	color: var(--clr-primary);
+}
+
+.menu_section a:hover svg path,
+.menu_section a:focus svg path {
+	fill: var(--clr-primary);
+}

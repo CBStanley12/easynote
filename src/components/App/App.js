@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Editor from "../Content/Editor";
 import Header from "../Header/";
-import Menu from "../Menu/Menu";
+import Menu from "../Menu/";
 import Preview from "../Content/Preview";
 import Sidebar from "../Sidebar";
 

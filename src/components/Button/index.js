@@ -6,6 +6,7 @@ import {ReactComponent as SidebarShowIcon} from '../SVG/sidebar-show.svg';
 import {ReactComponent as MarkdownHideIcon} from '../SVG/markdown-hide.svg';
 import {ReactComponent as MarkdownShowIcon} from '../SVG/markdown-show.svg';
 import {ReactComponent as DeleteIcon} from '../SVG/delete.svg';
+import {ReactComponent as CloseIcon} from '../SVG/close.svg';
 
 const ICONS = {
 	create: <CreateIcon />,
@@ -14,6 +15,7 @@ const ICONS = {
 	markdownHide: <MarkdownHideIcon />,
 	markdownShow: <MarkdownShowIcon />,
 	delete: <DeleteIcon />,
+	close: <CloseIcon />,
 };
 
 const Button = ({ cls, click, label, tabIndex, icon }) => {

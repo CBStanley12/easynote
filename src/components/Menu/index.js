@@ -1,8 +1,64 @@
+import './styles.css';
 import React from 'react';
+import Button from '../Button';
+import {ReactComponent as GlobeIcon} from '../SVG/globe.svg';
+import {ReactComponent as IssueIcon} from '../SVG/issue.svg';
+import {ReactComponent as UserIcon} from '../SVG/user.svg';
+import {ReactComponent as SelectIcon} from '../SVG/select.svg';
 
+const Menu = () => {
+	return (
+		<aside className="l-menu menu" data-theme="light">
+			<Button cls="btn--close" click={() => console.log('Close menu button clicked!')} label="Close Menu" tabIndex="1" icon="close" />
+			<div className="menu_section">
+				<label htmlFor="font">FONT</label>
+				<select id="font" name="font">
+					<optgroup label="Serif">
+						<option value="merriweather">Merriweather</option>
+						<option value="roboto-slab">Roboto Slab</option>
+					</optgroup>
+					<optgroup label="Sans-Serif">
+						<option value="roboto">Roboto</option>
+						<option value="open-sans">Open Sans</option>
+					</optgroup>
+					<optgroup label="Monospace">
+						<option value="roboto-mono">Roboto Mono</option>
+						<option value="source-code">Source Code Pro</option>
+					</optgroup>
+				</select>
+				<SelectIcon />
+			</div>
+			<div className="menu_section">
+				<label htmlFor="theme">THEME</label>
+				<select id="theme" name="theme">
+					<option value="light">Light</option>
+					<option value="dark">Dark</option>
+					<option value="system">System</option>
+				</select>
+				<SelectIcon />
+			</div>
+			<div className="menu_section">
+				<a href="">
+					<GlobeIcon />
+					View Project on GitHub
+				</a>
+				<a href="">
+					<IssueIcon />
+					Report an Issue
+				</a>
+				<a href="">
+					<UserIcon />
+					Project by Christopher Stanley
+				</a>
+			</div>
+		</aside>
+	)
+}
+
+/*
 const Menu = ({ isMenuDisplayed, theme, font, changeTheme, changeFont }) => {
     return (
-        <div className="layout-menu menu" data-display={isMenuDisplayed ? "is-active" : "is-hidden"}>
+        <div className="layout-menu menu" data-display="is-active">
             <div className="menu_section">
                 <h4 className="menu_section-title">
                     <svg className="menu-icon menu-icon--title" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
@@ -89,5 +145,6 @@ const Menu = ({ isMenuDisplayed, theme, font, changeTheme, changeFont }) => {
         </div>
     )
 }
+*/
 
 export default Menu;
