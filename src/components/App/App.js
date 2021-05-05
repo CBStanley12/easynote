@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-import Editor from "../Content/Editor";
+import Content from "../Content";
 import Header from "../Header/";
 import Menu from "../Menu/";
-import Preview from "../Content/Preview";
 import Sidebar from "../Sidebar";
 
 class App extends Component {
@@ -256,19 +255,19 @@ class App extends Component {
       editNote,
       deleteNote,
       selectNote,
-      togglePreview,
 	  toggleSidebar,
       toggleMenu,
+      togglePreview,
       changeTheme,
       changeFont,
     } = this;
 
-    let content;
+    //let content;
     let index = notes.findIndex((value, index, array) => {
       return value.id === activeNote;
     });
 
-    if (isPreviewDisplayed) {
+    /*if (isPreviewDisplayed) {
       content = (
         <Preview textContent={notes.length > 0 ? notes[index].text : ""} />
       );
@@ -280,7 +279,7 @@ class App extends Component {
           onChange={editNote}
         />
       );
-    }
+    }*/
 
     return (
       <div id="theme" data-theme={settings.theme} data-font={settings.font}>
@@ -315,7 +314,11 @@ class App extends Component {
             isPreviewDisplayed={isPreviewDisplayed}
           />
 
-          {content}
+          <Content
+		  	isPreviewDisplayed={isPreviewDisplayed}
+			textContent={(notes.length > 0) ? notes[index].text : null}
+			onChange={editNote}
+		  />
         </div>
       </div>
     );
