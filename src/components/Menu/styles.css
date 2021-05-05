@@ -12,8 +12,13 @@
 	padding: 40px 30px;
 	position: absolute;
 	top: 50%;
+	visibility: hidden;
 	width: 300px;
 	z-index: 10;
+}
+
+.menu.active {
+	visibility: visible;
 }
 
 .l-menu,

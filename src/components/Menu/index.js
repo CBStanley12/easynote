@@ -6,10 +6,10 @@ import {ReactComponent as IssueIcon} from '../SVG/issue.svg';
 import {ReactComponent as UserIcon} from '../SVG/user.svg';
 import {ReactComponent as SelectIcon} from '../SVG/select.svg';
 
-const Menu = () => {
+const Menu = ({ isActive, toggleMenu }) => {
 	return (
-		<aside className="l-menu menu" data-theme="light">
-			<Button cls="btn--close" click={() => console.log('Close menu button clicked!')} label="Close Menu" tabIndex="1" icon="close" />
+		<aside className={`l-menu menu ${(isActive) ? "active" : ""}`} data-theme="light">
+			<Button cls="btn--close" click={toggleMenu} label="Close Menu" tabIndex="1" icon="close" />
 			<div className="menu_section">
 				<label htmlFor="font">FONT</label>
 				<select id="font" name="font">

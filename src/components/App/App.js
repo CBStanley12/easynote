@@ -18,7 +18,7 @@ class App extends Component {
       ],
       activeNote: "_jig5f12qvx",
       isPreviewDisplayed: false,
-      isMenuDisplayed: false,
+      isMenuActive: false,
       settings: {
         theme: "system",
         font: "serif",
@@ -137,7 +137,7 @@ class App extends Component {
   // Function to toggle the menu
   toggleMenu() {
     this.setState({
-      isMenuDisplayed: !this.state.isMenuDisplayed,
+      isMenuActive: !this.state.isMenuActive
     });
   }
 
@@ -237,7 +237,7 @@ class App extends Component {
     const {
       notes,
       activeNote,
-      isMenuDisplayed,
+      isMenuActive,
       isPreviewDisplayed,
       settings,
     } = this.state;
@@ -274,7 +274,8 @@ class App extends Component {
     return (
       <div id="theme" data-theme={settings.theme} data-font={settings.font}>
         <Menu
-          isMenuDisplayed={isMenuDisplayed}
+          isActive={isMenuActive}
+		  toggleMenu={toggleMenu}
           theme={settings.theme}
           font={settings.font}
           changeTheme={changeTheme}
@@ -282,7 +283,7 @@ class App extends Component {
         />
         <div
           className="layout-overlay"
-          data-display={isMenuDisplayed ? "is-active" : "is-hidden"}
+          //data-display={isMenuDisplayed ? "is-active" : "is-hidden"}
           onClick={toggleMenu}
         ></div>
         <div className="layout-container">

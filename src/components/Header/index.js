@@ -5,10 +5,10 @@ import Button from '../Button';
 const Header = ({ togglePreview, deleteNote, isPreviewDisplayed }) => {
     return (
         <header className="l-header header" data-theme="light">
-			<Button cls="btn--left" click={toggleSidebar} label="Hide Sidebar" tabIndex="3" icon="sidebarHide" />
+			<Button cls="btn--left" click={toggleSidebar} label="Hide Sidebar" tabIndex="4" icon="sidebarHide" />
             <div className="header_icons">
-				<Button cls="btn--right" click={togglePreview} label="Toggle Preview" tabIndex="4" icon="markdownShow" />
-				<Button cls="btn--right" click={deleteNote} label="Delete Note" tabIndex="5" icon="delete" />
+				<Button cls="btn--right" click={togglePreview} label="Toggle Preview" tabIndex="5" icon="markdownShow" />
+				<Button cls="btn--right" click={deleteNote} label="Delete Note" tabIndex="6" icon="delete" />
             </div>
         </header>
     )
