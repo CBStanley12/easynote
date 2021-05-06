@@ -27,7 +27,7 @@
 	--mono-source: "Source Code Pro", monospace;
 
 	--font-primary: var(--sans-roboto);
-	--font-editor: var(--sans-roboto);
+	--font-content: var(--mono-source);
 }
 
 [data-theme="light"] {

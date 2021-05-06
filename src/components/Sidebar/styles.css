@@ -7,6 +7,7 @@
 
 .sidebar {
 	border-right: 1px solid var(--clr-border);
+	font-family: var(--font-content);
 	grid-area: sidebar;
 }
 
