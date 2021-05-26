@@ -2,9 +2,9 @@
 
 .menu {
 	background: var(--clr-background);
-	border: 1px solid var(--clr-accent);
+	border: 1px solid var(--clr-border);
 	border-radius: 10px;
-	box-shadow: 0px 20px 40px 5px #A0A0A0;
+	box-shadow: 0px 20px 40px 5px var(--clr-shadow);
 	height: 400px;
 	left: 50%;
 	margin-left: -150px;
@@ -56,13 +56,18 @@
 	-moz-appearance: none;
 	-o-appearance: none;
 	appearance: none;
-	border: 1px solid var(--clr-border);
+	background-color: var(--clr-background--secondary);
+	border: 1px solid var(--clr-border--secondary);
 	border-radius: 5px;
 	color: var(--clr-text--secondary);
 	font-family: inherit;
 	height: 36px;
-	outline-color: var(--clr-primary);
+	outline: 0;
 	padding: 5px 15px;
+}
+
+.menu_section select:focus {
+	border: 1px solid var(--clr-primary);
 }
 
 .menu_section select + svg {

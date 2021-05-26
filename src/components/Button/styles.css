@@ -20,7 +20,7 @@
 
 /* Tooltip */
 .btn-icon[aria-label]:after {
-  background: gray;
+  background: var(--clr-tooltip);
   border-radius: 5px;
   color: white;
   content: attr(aria-label);

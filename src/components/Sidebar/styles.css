@@ -7,7 +7,6 @@
 
 .sidebar {
 	border-right: 1px solid var(--clr-border);
-	font-family: var(--font-content);
 	grid-area: sidebar;
 }
 
@@ -31,13 +30,17 @@
 }
 
 .sidebar_header-search input {
-	border: 1px solid var(--clr-accent);
+	background-color: var(--clr-background--secondary);
+	border: 1px solid var(--clr-border--secondary);
 	border-radius: 3px;
 	height: 100%;
-	outline-color: var(--clr-primary);
 	padding: 0 0.5rem;
 	text-indent: 9%;
 	width: 100%;
+}
+
+.sidebar_header-search input:focus {
+	border: 1px solid var(--clr-primary);
 }
 
 .sidebar_header-search input::placeholder {
@@ -58,6 +61,7 @@
 	align-items: stretch;
 	display: flex;
 	flex-direction: column;
+	font-family: var(--font-content);
 	height: 100%;
 	justify-content: flex-start;
 	overflow-y: auto;
@@ -74,31 +78,28 @@
 /* Note Preview */
 .sidebar_notes-preview {
 	border-bottom: 1px solid var(--clr-border);
+	border-left: 7px solid transparent;
 	flex: 0 1 100px;
-	margin-left: 3rem;
-	padding: 0.8rem 2rem 0.8rem 0;
+	padding: 0.8rem 2rem 0.8rem 3rem;
 	position: relative;
 }
 
 .sidebar_notes-preview:hover {
-	background-color: var(--clr-note-bg--hover);
-}
-
-.sidebar_notes-preview:hover .preview_border {
-	border-left: 6px solid var(--clr-note-border--hover);
-}
-
-.preview_border {
-	left: -3rem;
-	height: 100%;
-	position: absolute;
-	top: 0;
+	background-color: var(--clr-note-bg--focus);
+	border-left: 7px solid var(--clr-note-border--focus);
 }
 
 .preview_title,
 .preview_text {
+	display: -webkit-box;
 	font-size: 0.9rem;
+	line-height: 1.1rem;
 	margin: 0;
+	max-height: 2.2rem;
+	overflow: hidden;
+	pointer-events: none;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
 	-webkit-user-select: none; /* Safari */        
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+/Edge */
@@ -113,12 +114,6 @@
 
 .preview_text {
 	color: var(--clr-text--secondary);
-	display: -webkit-box;
-	line-height: 0.9rem;
-	max-height: 1.8rem;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	-webkit-line-clamp: 2;
 }
 
 .note[data-state="is-active"] {
