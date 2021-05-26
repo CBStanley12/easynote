@@ -6,13 +6,13 @@ import {ReactComponent as IssueIcon} from '../SVG/issue.svg';
 import {ReactComponent as UserIcon} from '../SVG/user.svg';
 import {ReactComponent as SelectIcon} from '../SVG/select.svg';
 
-const Menu = ({ isActive, toggleMenu }) => {
+const Menu = ({ isMenuActive, toggleMenu, theme, changeTheme, font, changeFont }) => {
 	return (
-		<aside className={`l-menu menu ${(isActive) ? "active" : ""}`} data-theme="light">
+		<aside className={`l-menu menu ${(isMenuActive) ? "active" : ""}`}>
 			<Button cls="btn--close" click={toggleMenu} label="Close Menu" tabIndex="1" icon="close" />
-			<div className="menu_section">
+			<section className="menu_section">
 				<label htmlFor="font">FONT</label>
-				<select id="font" name="font">
+				<select id="font" name="font" value={font} onChange={changeFont}>
 					<optgroup label="Serif">
 						<option value="merriweather">Merriweather</option>
 						<option value="roboto-slab">Roboto Slab</option>
@@ -27,17 +27,16 @@ const Menu = ({ isActive, toggleMenu }) => {
 					</optgroup>
 				</select>
 				<SelectIcon />
-			</div>
-			<div className="menu_section">
+			</section>
+			<section className="menu_section">
 				<label htmlFor="theme">THEME</label>
-				<select id="theme" name="theme">
+				<select id="theme" name="theme" value={theme} onChange={changeTheme}>
 					<option value="light" selected>Light</option>
 					<option value="dark">Dark</option>
-					<option value="system">System</option>
 				</select>
 				<SelectIcon />
-			</div>
-			<div className="menu_section">
+			</section>
+			<section className="menu_section">
 				<a href="">
 					<GlobeIcon />
 					View Project on GitHub
@@ -50,7 +49,7 @@ const Menu = ({ isActive, toggleMenu }) => {
 					<UserIcon />
 					Project by Christopher Stanley
 				</a>
-			</div>
+			</section>
 		</aside>
 	)
 }

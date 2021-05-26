@@ -2,9 +2,9 @@ import './styles.css';
 import React from 'react';
 import Button from '../Button';
 
-const Header = ({ isSidebarActive, toggleSidebar, toggleMarkdown, deleteNote, isMarkdownDisplayed }) => {
+const Header = ({ isSidebarActive, toggleSidebar, isMarkdownActive, toggleMarkdown, deleteNote }) => {
     return (
-        <header className="l-header header" data-theme="light">
+        <header className="l-header header">
 			<Button
 				cls="btn--left" click={toggleSidebar}
 				label={(isSidebarActive) ? 'Hide Sidebar' : 'Show Sidebar'}
@@ -13,9 +13,9 @@ const Header = ({ isSidebarActive, toggleSidebar, toggleMarkdown, deleteNote, is
             <div className="header_icons">
 				<Button
 					cls="btn--right" click={toggleMarkdown}
-					label={(isMarkdownDisplayed) ? 'Hide Markdown' : 'Show Markdown'}
+					label={(isMarkdownActive) ? 'Hide Markdown' : 'Show Markdown'}
 					tabIndex="5"
-					icon={(isMarkdownDisplayed) ? 'markdownHide' : 'markdownShow'}
+					icon={(isMarkdownActive) ? 'markdownHide' : 'markdownShow'}
 				/>
 				<Button cls="btn--right" click={deleteNote} label="Delete Note" tabIndex="6" icon="delete" />
             </div>
