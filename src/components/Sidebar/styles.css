@@ -84,7 +84,12 @@
 	position: relative;
 }
 
-.sidebar_notes-preview:hover {
+.sidebar_notes-preview.active {
+	background-color: var(--clr-note-bg--active);
+	border-left: 7px solid var(--clr-note-border--active);
+}
+
+.sidebar_notes-preview.active:focus {
 	background-color: var(--clr-note-bg--focus);
 	border-left: 7px solid var(--clr-note-border--focus);
 }

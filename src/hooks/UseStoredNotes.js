@@ -52,7 +52,8 @@ And here. | Okay. | I think we get it.
 const defaultNotes = [
 	{
 		id: '_jig5f12qvx',
-		text: placeholderNote
+		text: placeholderNote,
+		status: ''
 	}
 ];
 
@@ -67,7 +68,7 @@ const useStoredNotes = () => {
 
 	const createNote = () => {
 		let ID = generateID();
-		setNotes([{id: ID, text: '# '}, ...notes]);
+		setNotes([{id: ID, text: '# ', status: 'active'}, ...notes]);
 		setActiveNote(ID);
 	};
 

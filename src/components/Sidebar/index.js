@@ -6,11 +6,10 @@ import formatNotePreview from '../../hooks/UseFormatNotePreview';
 
 const Sidebar = ({ font, isSidebarActive, notes, activeNote, selectNote, toggleMenu, createNote }) => {
 	function renderNotePreview(note) {
-		let active = (note.id === activeNote),
-			[title, text] = formatNotePreview(note.text);
-
+		let [title, text] = formatNotePreview(note.text);
+		
 		return (
-			<article id={note.id} className="sidebar_notes-preview" data-state={active ? "is-active" : ""} onClick={selectNote}>
+			<article key={note.id} id={note.id} className={`sidebar_notes-preview ${(note.id === activeNote) ? 'active' : ''}`} onClick={selectNote} tabIndex="-1">
 				<h3 className="preview_title">{title}</h3>
 				<p className="preview_text">{text}</p>
 			</article>

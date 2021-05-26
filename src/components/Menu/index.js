@@ -18,7 +18,7 @@ const Menu = ({ isMenuActive, toggleMenu, theme, changeTheme, font, changeFont }
 						<option value="roboto-slab">Roboto Slab</option>
 					</optgroup>
 					<optgroup label="Sans-Serif">
-						<option value="roboto" selected>Roboto</option>
+						<option value="roboto">Roboto</option>
 						<option value="open-sans">Open Sans</option>
 					</optgroup>
 					<optgroup label="Monospace">
@@ -31,21 +31,21 @@ const Menu = ({ isMenuActive, toggleMenu, theme, changeTheme, font, changeFont }
 			<section className="menu_section">
 				<label htmlFor="theme">THEME</label>
 				<select id="theme" name="theme" value={theme} onChange={changeTheme}>
-					<option value="light" selected>Light</option>
+					<option value="light">Light</option>
 					<option value="dark">Dark</option>
 				</select>
 				<SelectIcon />
 			</section>
 			<section className="menu_section">
-				<a href="">
+				<a href="https://github.com/CBStanley12/easynote">
 					<GlobeIcon />
 					View Project on GitHub
 				</a>
-				<a href="">
+				<a href="https://github.com/CBStanley12/easynote/issues/new">
 					<IssueIcon />
 					Report an Issue
 				</a>
-				<a href="">
+				<a href="https://cbstanley.dev">
 					<UserIcon />
 					Project by Christopher Stanley
 				</a>

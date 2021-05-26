@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./styles.css";
 import Content from "../Content";
 import Header from "../Header/";
@@ -24,7 +24,7 @@ const App = () => {
 				font={font}
 				isSidebarActive={isSidebarActive}
 				notes={notes}
-				activeNote=""
+				activeNote={activeNote}
 				selectNote={selectNote}
 				toggleMenu={toggleMenu}
 				createNote={createNote}
