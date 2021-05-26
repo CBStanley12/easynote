@@ -4,12 +4,21 @@ import {ReactComponent as SearchIcon} from '../SVG/search.svg';
 import Button from '../Button';
 import formatNotePreview from '../../hooks/UseFormatNotePreview';
 
-const Sidebar = ({ font, isSidebarActive, notes, activeNote, selectNote, toggleMenu, createNote }) => {
+const Sidebar = ({ font, isSidebarActive, notes, activeNote, selectNote, toggleMenu, toggleSidebar, createNote }) => {
 	function renderNotePreview(note) {
 		let [title, text] = formatNotePreview(note.text);
+
+		const handleClick = (e) => {
+			selectNote(e);
+			if (window.innerWidth <= 900) toggleSidebar();
+		}
 		
 		return (
-			<article key={note.id} id={note.id} className={`sidebar_notes-preview ${(note.id === activeNote) ? 'active' : ''}`} onClick={selectNote} tabIndex="-1">
+			<article
+				key={note.id} id={note.id} tabIndex="-1"
+				className={`sidebar_notes-preview ${(note.id === activeNote) ? 'active' : ''}`}
+				onClick={handleClick} 
+			>
 				<h3 className="preview_title">{title}</h3>
 				<p className="preview_text">{text}</p>
 			</article>

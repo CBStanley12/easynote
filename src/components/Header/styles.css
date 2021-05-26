@@ -25,3 +25,13 @@
 .sidebar.hidden + .header {
 	grid-area: 1 / 1 / 2 / last-line;
 }
+
+@media only screen and (max-width: 900px) {
+	.header {
+		display: none;
+	}
+
+	.sidebar.hidden + .header {
+		display: flex;
+	}
+}

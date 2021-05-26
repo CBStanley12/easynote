@@ -27,6 +27,7 @@ const App = () => {
 				activeNote={activeNote}
 				selectNote={selectNote}
 				toggleMenu={toggleMenu}
+				toggleSidebar={toggleSidebar}
 				createNote={createNote}
 			/>
 

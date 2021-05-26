@@ -47,3 +47,11 @@ textarea:disabled {
 	height: calc(var(--vh, 1vh) * 100);
 	overflow: hidden;
 }
+
+@media only screen and (max-width: 900px) {
+	.l-container {
+		grid-template-areas: none;
+		grid-template-columns: 1fr;
+		width: 100vw;
+	}
+}

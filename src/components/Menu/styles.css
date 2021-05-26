@@ -102,3 +102,20 @@
 .menu_section a:focus svg path {
 	fill: var(--clr-primary);
 }
+
+@media only screen and (max-width: 900px) {
+	.menu {
+		border-radius: 0;
+		box-shadow: none;
+		height: 100%;
+		left: 0;
+		margin-left: 0;
+		margin-top: 0;
+		top: 0;
+		width: 100%;
+	}
+
+	.l-menu {
+		justify-content: space-evenly;
+	}
+}

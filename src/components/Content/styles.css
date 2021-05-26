@@ -72,10 +72,15 @@
 
 @media only screen and (max-width: 900px) {
 	.content {
-		padding: 1.5rem;
+		display: none;
 	}
 
-	.content_markdown img {
-		max-width: 100%;
+	.sidebar.hidden ~ .content {
+		display: block;
+	}
+
+	.content_editor,
+	.content_markdown {
+		padding: 1rem 10%;
 	}
 }

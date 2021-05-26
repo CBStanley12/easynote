@@ -2,11 +2,11 @@
 
 /* Main Component */
 .btn {
-  cursor: pointer;
-  display: grid;
-  outline: none;
-  place-items: center;
-  position: relative;
+	cursor: pointer;
+	display: grid;
+	outline: none;
+	place-items: center;
+	position: relative;
 }
 
 /* Icon Button */
@@ -20,31 +20,31 @@
 
 /* Tooltip */
 .btn-icon[aria-label]:after {
-  background: var(--clr-tooltip);
-  border-radius: 5px;
-  color: white;
-  content: attr(aria-label);
-  opacity: 0;
-  padding: 4px 8px;
-  pointer-events: none;
-  position: absolute;
-  top: 120%;
-  transition: opacity 0.2s;
-  white-space: nowrap;
-  z-index: 20;
+	background: var(--clr-tooltip);
+	border-radius: 5px;
+	color: white;
+	content: attr(aria-label);
+	opacity: 0;
+	padding: 4px 8px;
+	pointer-events: none;
+	position: absolute;
+	top: 120%;
+	transition: opacity 0.2s;
+	white-space: nowrap;
+	z-index: 20;
 }
 
 .btn-icon[aria-label]:hover:after {
-  opacity: 1;
-  transition-delay: 0.2s;
+	opacity: 1;
+	transition-delay: 0.2s;
 }
 
 .btn--left[aria-label]:after {
-  left: 0;
+  	left: 0;
 }
 
 .btn--right[aria-label]:after {
-  right: 0;
+  	right: 0;
 }
 
 .btn--close {
@@ -67,4 +67,22 @@
 
 .btn--close[aria-label]:after {
 	display: none;
+}
+
+@media only screen and (max-width: 900px) {
+	.btn--close {
+		height: 24px;
+		left: 20px;
+		top: 20px;
+		width: 24px;
+	}
+
+	.btn--close svg {
+		height: 12px;
+		width: 12px;
+	}
+
+	.btn--close svg path {
+		fill: var(--clr-background);
+	}
 }
