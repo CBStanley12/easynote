@@ -1,17 +1,26 @@
+@import '../../styles/_variables.css';
+
 /* Main Component */
 .btn {
   cursor: pointer;
+  display: grid;
+  outline: none;
+  place-items: center;
   position: relative;
 }
 
 /* Icon Button */
-.btn-icon {
-  color: var(--color-primary);
+.btn-icon svg path {
+	fill: var(--clr-accent);
+}
+
+.btn-icon:focus svg path {
+	fill: var(--clr-primary);
 }
 
 /* Tooltip */
 .btn-icon[aria-label]:after {
-  background: gray;
+  background: var(--clr-tooltip);
   border-radius: 5px;
   color: white;
   content: attr(aria-label);
@@ -36,4 +45,26 @@
 
 .btn--right[aria-label]:after {
   right: 0;
+}
+
+.btn--close {
+	background: var(--red);
+	border-radius: 50%;
+	height: 12px;
+	left: 10px;
+	position: absolute;
+	top: 10px;
+	width: 12px;
+}
+
+.btn--close svg path {
+	fill: none;
+}
+
+.btn--close:hover svg path {
+	fill: var(--clr-background);
+}
+
+.btn--close[aria-label]:after {
+	display: none;
 }

@@ -1,0 +1,81 @@
+@import "../../styles/_variables.css";
+
+.content {
+	background: inherit;
+	grid-area: content;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.sidebar.hidden ~ .content {
+	grid-area: 2 / 1 / last-line / last-line;
+}
+
+.content_editor,
+.content_markdown {
+	background: inherit;
+	color: var(--clr-text--primary);
+	font-family: var(--font-content);
+	height: 100%;
+	/*height: calc(100vh - 50px);
+	height: calc((var(--vh, 1vh) * 100) - 50px);*/
+	overflow-y: auto;
+	padding: 1rem 15%;
+	width: 100%;
+}
+
+.content_markdown a {
+	color: var(--clr-primary);
+}
+
+.content_markdown blockquote {
+	border-left: 3px solid var(--clr-primary);
+	padding: 0 1rem;
+}
+
+.content_markdown table,
+.content_markdown table th,
+.content_markdown table td {
+	border: 1px solid var(--clr-border);
+	border-collapse: collapse;
+	padding: 0.3rem;
+}
+
+.content_markdown p {
+	line-height: 1.5rem;
+}
+
+.content_markdown pre {
+	border: 1px solid var(--clr-border);
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+.content_markdown code {
+	background-color: var(--white-0);
+	border: 1px solid var(--clr-border);
+	border-radius: 3px;
+	color: black;
+	padding: 0 0.4rem;
+}
+
+.content_markdown pre code {
+	border: none;
+	border-radius: 0;
+	display: block;
+	font-size: 0.8rem;
+	line-height: 1.5rem;
+	overflow-x: auto;
+	padding: 0.8rem 0.5rem;
+}
+
+@media only screen and (max-width: 900px) {
+	.content {
+		padding: 1.5rem;
+	}
+
+	.content_markdown img {
+		max-width: 100%;
+	}
+}

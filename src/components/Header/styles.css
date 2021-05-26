@@ -1,0 +1,27 @@
+@import '../../styles/_variables.css';
+
+.l-header {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+.header {
+	border-bottom: 1px solid var(--clr-border);
+	grid-area: header;
+	padding: 12px 20px;
+}
+
+.header_icons {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+.header_icons > .btn:first-child {
+	margin-right: 20px;
+}
+
+.sidebar.hidden + .header {
+	grid-area: 1 / 1 / 2 / last-line;
+}

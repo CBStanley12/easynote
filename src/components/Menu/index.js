@@ -1,8 +1,63 @@
+import './styles.css';
 import React from 'react';
+import Button from '../Button';
+import {ReactComponent as GlobeIcon} from '../SVG/globe.svg';
+import {ReactComponent as IssueIcon} from '../SVG/issue.svg';
+import {ReactComponent as UserIcon} from '../SVG/user.svg';
+import {ReactComponent as SelectIcon} from '../SVG/select.svg';
 
+const Menu = ({ isMenuActive, toggleMenu, theme, changeTheme, font, changeFont }) => {
+	return (
+		<aside className={`l-menu menu ${(isMenuActive) ? "active" : ""}`}>
+			<Button cls="btn--close" click={toggleMenu} label="Close Menu" tabIndex="1" icon="close" />
+			<section className="menu_section">
+				<label htmlFor="font">FONT</label>
+				<select id="font" name="font" value={font} onChange={changeFont}>
+					<optgroup label="Serif">
+						<option value="merriweather">Merriweather</option>
+						<option value="roboto-slab">Roboto Slab</option>
+					</optgroup>
+					<optgroup label="Sans-Serif">
+						<option value="roboto">Roboto</option>
+						<option value="open-sans">Open Sans</option>
+					</optgroup>
+					<optgroup label="Monospace">
+						<option value="roboto-mono">Roboto Mono</option>
+						<option value="source-code">Source Code Pro</option>
+					</optgroup>
+				</select>
+				<SelectIcon />
+			</section>
+			<section className="menu_section">
+				<label htmlFor="theme">THEME</label>
+				<select id="theme" name="theme" value={theme} onChange={changeTheme}>
+					<option value="light">Light</option>
+					<option value="dark">Dark</option>
+				</select>
+				<SelectIcon />
+			</section>
+			<section className="menu_section">
+				<a href="https://github.com/CBStanley12/easynote">
+					<GlobeIcon />
+					View Project on GitHub
+				</a>
+				<a href="https://github.com/CBStanley12/easynote/issues/new">
+					<IssueIcon />
+					Report an Issue
+				</a>
+				<a href="https://cbstanley.dev">
+					<UserIcon />
+					Project by Christopher Stanley
+				</a>
+			</section>
+		</aside>
+	)
+}
+
+/*
 const Menu = ({ isMenuDisplayed, theme, font, changeTheme, changeFont }) => {
     return (
-        <div className="layout-menu menu" data-display={isMenuDisplayed ? "is-active" : "is-hidden"}>
+        <div className="layout-menu menu" data-display="is-active">
             <div className="menu_section">
                 <h4 className="menu_section-title">
                     <svg className="menu-icon menu-icon--title" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
@@ -89,5 +144,6 @@ const Menu = ({ isMenuDisplayed, theme, font, changeTheme, changeFont }) => {
         </div>
     )
 }
+*/
 
 export default Menu;

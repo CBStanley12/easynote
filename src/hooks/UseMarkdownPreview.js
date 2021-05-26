@@ -21,7 +21,7 @@ renderer.link = function (href, title, text) {
     return `<a target="_blank" href="${href}">${text}</a>`;
 }
 
-const Preview = ({ textContent }) => {
+const useMarkdownPreview = (textContent) => {
     useEffect(() => {
         hljs.initHighlightingOnLoad();
 
@@ -32,10 +32,8 @@ const Preview = ({ textContent }) => {
     }, []);
 
     return (
-        <div className="layout-content">
-            <div className="content" dangerouslySetInnerHTML={{ __html: marked(textContent, { renderer: renderer }) }} />
-        </div>
+        <article className="content_markdown" dangerouslySetInnerHTML={{ __html: marked(textContent, { renderer: renderer }) }} />
     )
 }
 
-export default Preview;
+export default useMarkdownPreview;
